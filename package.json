@@ -1,0 +1,11 @@
+{
+  "name": "jmt2-ionic",
+  "version": "0.0.1",
+  "description": "JFintechLoan: Personal loan finance utility",
+  "devDependencies": {
+    "gulp": "^3.5.6",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
