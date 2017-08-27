@@ -1,11 +1,16 @@
 {
-  "name": "jmt2-ionic",
+  "name": "JMT",
   "app_id": "",
   "type": "ionic1",
   "integrations": {
     "gulp": {}
   },
+  "gulpStartupTasks": [
+    "sass"
+  ],
   "watchPatterns": [
-    "scss/**/*"
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
   ]
 }
