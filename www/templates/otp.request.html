@@ -1,0 +1,38 @@
+<ion-view>
+  <ion-content class="container flex-start" ng-controller="OtpRequestController" scroll="true">
+    <div class="row row-center"><h2 class="full-width padding text-center">เข้าสู่ระบบ</h2></div>
+    <form name="mainForm" ng-submit="requestOTP()" novalidate>
+      <div class="list">
+        <!--<pre>{{ mainForm.$submitted | json }}</pre>-->
+        <label class="item item-input item-stacked-label"
+               ng-class="{'error' : mainForm.$submitted && mainForm.phone_number.$invalid}">
+          <span class="input-label"><h3>เบอร์โทรศัพท์มือถือ</h3></span>
+          <input class="" type="tel" name="phone_number" ng-model="phone_number"
+                 placeholder="" numbers-only required tabindex="1" ui-mask="999-999-9999">
+          <p class="helper text-wrap">
+            กรุณากรอกหมายเลขโทรศัพท์ของท่านที่ได้ลงทะเบียนไว้
+          </p>
+        </label>
+        <label class="item item-input item-stacked-label"
+               ng-class="{'error' : mainForm.$submitted && mainForm.account_id.$invalid}">
+          <span class="input-label"><h3>หมายเลขสมาชิก</h3></span>
+          <input type="tel" name="account_id" ng-model="account_id" placeholder=""
+                 required tabindex="2" ui-mask="9999-9999-9999-9999">
+          <p class="helper text-wrap">
+            กรุณากรอกหมายเลขสมาชิกสินเชื่อหมุนเวียนของท่าน
+          </p>
+        </label>
+        <div class="item text-center" ng-if="mainForm.$submitted && mainForm.$invalid">
+          <h2 class="assertive">{{ error }}</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="button button-block button-positive" type="submit" tabindex="3">ขอรหัส OTP</button>
+        </div>
+      </div>
+    </form>
+    <div class="fix-keyboard"></div>
+  </ion-content>
+</ion-view>

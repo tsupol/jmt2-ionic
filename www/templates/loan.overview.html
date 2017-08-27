@@ -1,0 +1,97 @@
+<ion-view ng-controller="LoanListController">
+  <!--<ion-nav-title>-->
+    <!--<div class="app-title">-->
+      <!--<h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>-->
+    <!--</div>-->
+  <!--</ion-nav-title>-->
+
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content>
+    <div class="container flex-start">
+      <div class="row assertive-gradient-bg loan-overview-header">
+        <div class="col col-34 col-bottom text-left">
+          <div class="block">ครบกำหนดชำระ</div>
+          <!--<div class="block roboto">{{ dueDate | amDateFormat:'DD/MM/YYYY' }}</div>-->
+          <div class="block roboto">{{ dueDate || '-' }}</div>
+        </div>
+        <div class="col col-66 text-right">
+          <!--<div class="row row-no-padding">-->
+            <!--<div class="col text-right">-->
+              <!--<span class="h5">ยอดชำระขั้นต่ำเดือน{{ dueDate | amDateFormat:'MMMM' }}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row row-no-padding">-->
+            <!--<div class="col text-right">-->
+              <!--<span class="h3 amount roboto">{{ (current_total_due_amount | number:2) || '-' }}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row row-no-padding">-->
+            <!--<div class="col text-right">-->
+              <!--<span class="h5">บาท</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        </div>
+      </div>
+
+      <div class="row row-no-padding">
+        <div class="col">
+          <ul class="list loan-list">
+            <li class="item item-divider no-padding">
+              <div class="row">
+                <div class="col text-left">
+                  <strong>รายละเอียด</strong>
+                </div>
+                <div class="col text-right">
+                  <a class="assertive no-underline" ui-sref="app.payment.list">ประวัติการชำระเงิน >></a>
+                </div>
+              </div>
+            </li>
+            <li class="item padding-10" ng-repeat="item in loanList" ng-class-odd="odd" ng-class-even="even">
+              <!--<img ng-src="{{ item.image }}">-->
+              <!--<h2 ng-bind="item.name"></h2>-->
+              <div class="row">
+                <div class="col" ng-switch="platform">
+                  <!--<span class="h3 strong">{{ parseLoanName(item.name) }}</span>-->
+                  <span class="h4 strong" ng-switch-when="ios">{{ parseLoanName(item.name) }}</span>
+                  <span class="h3 strong" ng-switch-default="">{{ parseLoanName(item.name) }}</span>
+                </div>
+                <div class="col col-40 col-bottom text-right" ng-if="item.has_billing_amount">
+                  <div class="h2 assertive roboto">{{ item.due_amount | number:2 }}</div>
+                  <div class="h6 gray">ยอดชำระตามใบแจ้งยอดล่าสุด</div>
+                </div>
+                <div class="col col-40 text-right" ng-if="!item.has_billing_amount">
+                  <div class="h5 gray">ยังไม่มียอดเรียกเก็บ</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col truncate col-bottom">
+                  <div class="h5">ประเภท: {{ parseLoanType(item.type) }}</div>
+                  <div class="h5">ข้อมูล ณ วันที่: {{ item.updated_at || item.imported_at }}</div>
+                  <div ng-switch="item.type">
+                    <div ng-switch-when="revolving loan">
+                      <div class="h5" ng-show="item.outstanding_balance_rl !== 0">ยอดค้างชำระทั้งหมด: {{ (item.outstanding_balance_rl | number:2) }} บาท</div>
+                      <div class="h5" ng-show="item.loan_amount_rl !== 0">ยอดเงินต้นคงค้าง: {{ (item.loan_amount_rl | number:2) }} บาท</div>
+                    </div>
+                    <div ng-switch-when="Mobile">
+                      <div class="h5" ng-show="item.outstanding_balance_ml !== 0">ยอดค้างชำระทั้งหมด: {{ item.outstanding_balance_ml | number:2 }} บาท</div>
+                      <div class="h5" ng-show="item.loan_amount_ml !== 0">จำนวนเงินกู้: {{ item.loan_amount_ml | number:2 }} บาท</div>
+                      <div class="h5">จำนวนงวด: {{ item.total_cycle_ml }} งวด</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col col-33 col-bottom text-right">
+                  <a class="h5 no-underline assertive" href="" ng-if="item.has_billing_amount" ng-click="openLoanDetail(item.id, $event)">ดูรายละเอียด >></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,65 @@
+<ion-view title="" ng-controller="PincodeController" hide-back-button="true" ng-init="init()">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4 class="title" ng-click="changeEnv()">กรุณาใส่รหัสผ่านที่ตั้งไว้ <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+  <ion-content class="center-vertical">
+    <div class="passcode-num-container">
+      <div class="row passcode-row" style="text-align: center">
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(1)"></div>
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(2)"></div>
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(3)"></div>
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(4)"></div>
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(5)"></div>
+        <div class="col col-10 passcode-col" ng-bind-html="displayPasscode(6)"></div>
+      </div>
+    </div>
+    <div class="passcode-btn-container">
+      <div class="row row-center">
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(1)">1</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(2)">2</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(3)">3</button>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(4)">4</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(5)">5</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(6)">6</button>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(7)">7</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(8)">8</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(9)">9</button>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col text-center passcode-btn">
+          <button class="button icon ion-loop button-light button-stretch" ng-click="RequestNewOTP()"></button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button button-light button-stretch" ng-click="add(0)">0</button>
+        </div>
+        <div class="col text-center passcode-btn">
+          <button class="button icon ion-backspace button-light button-stretch" ng-click="delete()"></button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

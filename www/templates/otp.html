@@ -1,0 +1,25 @@
+<!--<ion-nav-bar class="bar-assertive" align-title="center">-->
+  <!--<ion-nav-back-button class="button button-clear">-->
+    <!--<i class="ion-chevron-left"></i>-->
+  <!--</ion-nav-back-button>-->
+
+  <!--<ion-nav-title>-->
+    <!--<h1 class="title">JFintech</h1>-->
+  <!--</ion-nav-title>-->
+<!--</ion-nav-bar>-->
+
+<ion-nav-bar class="bar-assertive" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <div class="app-title" ng-click="changeEnv()">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+</ion-nav-bar>
+
+<ion-nav-view name="mainContent"></ion-nav-view>

@@ -1,0 +1,38 @@
+<ion-view>
+  <ion-content ng-controller="NotificationController">
+    <div class="list">
+
+      <!--<div class="item item-divider" ng-repeat-start="(groupName, groupArray) in settingsList">-->
+        <!--<strong>{{ groupName }}</strong>-->
+      <!--</div>-->
+
+      <!--<div class="item item-toggle" ng-repeat="item in groupArray">-->
+        <!--{{ item.title }}-->
+        <!--<p class="description" ng-if="item.description">{{ item.description }}</p>-->
+        <!--<label class="toggle" ng-class="getToggleClass(item)">-->
+          <!--<input type="checkbox" ng-model="item.value" ng-true-value="true" ng-false-value="false">-->
+          <!--<div class="track">-->
+            <!--<div class="handle"></div>-->
+          <!--</div>-->
+        <!--</label>-->
+      <!--</div>-->
+
+      <!--<div ng-repeat-end=""></div>-->
+
+      <div class="item item-divider text-center">
+        <strong>การแจ้งเตือน</strong>
+      </div>
+
+      <div class="item item-toggle">
+        รับการแจ้งเตือนจากระบบ
+        <!--<p class="description">ระบบจะแจ้งเตือนเมื่อท่านใกล้ครบกำหนดชำระ</p>-->
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" ng-model="$root.profile.endpoint.enable" ng-change="ChangeNotification()" ng-true-value="true" ng-false-value="false">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

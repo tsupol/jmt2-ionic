@@ -1,0 +1,283 @@
+<ion-view ng-controller="ApplicationCreateStep3Controller" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container" scroll="true">
+
+    <br>
+    <h4 class="text-center"><b>Step 3 : สถานที่ทำงาน</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+    <div class="list">
+      <form class="full-size" name="formS3" ng-submit="next()" novalidate>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-67" ng-class="{ 'has-errors' : formS3.office_tel.$invalid && !formS3.office_tel.$pristine}">
+            <span class="input-label ">โทรศัพท์ที่ทำงาน <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" ng-model="application.office_tel" name="office_tel" placeholder="" required>
+            <div class="help-block" ng-show="formS3.office_tel.$invalid && !formS3.office_tel.$pristine">
+              <p ng-show="formS3.name_th.$error.required">* โปรดกรอกเบอร์โทรศัพท์บ้าน</p>
+              <p ng-show="formS3.name_th.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-33">
+            <span class="input-label ">ต่อ</span>
+            <input type="text" ng-model="application.office_tel_link" placeholder="">
+          </label>
+        </div>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-67" ng-class="{ 'has-errors' : formS3.office_headquarters_tel.$invalid && !formS3.office_headquarters_tel.$pristine}">
+            <span class="input-label ">โทรศัพท์(สำนักงานใหญ่)</span>
+            <input type="text" name="office_headquarters_tel" pattern="\d*" ng-model="application.office_headquarters_tel" placeholder="">
+            <div class="help-block" ng-show="formS3.office_headquarters_tel.$invalid && !formS3.office_headquarters_tel.$pristine">
+              <p ng-show="formS3.office_headquarters_tel.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-33">
+            <span class="input-label ">ต่อ</span>
+            <input type="text" ng-model="application.office_headquarters_tel_link" placeholder="">
+          </label>
+        </div>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.office_address_number.$invalid && !formS3.office_address_number.$pristine}">
+            <span class="input-label ">เลขที่ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" ng-model="application.office_address_number" name="office_address_number" placeholder="" required>
+            <div class="help-block" ng-show="formS3.office_address_number.$invalid && !formS3.office_address_number.$pristine">
+              <p ng-show="formS3.office_address_number.$error.required">* โปรดกรอกบ้านเลขที่</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">หมู่ที่</span>
+            <input type="text" ng-model="application.office_address_moo" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">หมู่บ้าน/อาคาร</span>
+            <input type="text" ng-model="application.office_address_village" placeholder="">
+          </label>
+        </div>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ชั้นที่</span>
+            <input type="text" ng-model="application.office_address_floor" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ห้อง</span>
+            <input type="text" ng-model="application.office_address_room" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ซอย</span>
+            <input type="text" ng-model="application.office_address_soi" placeholder="">
+          </label>
+        </div>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS3.office_address_road.$invalid && !formS3.office_address_road.$pristine}">
+          <span class="input-label ">ถนน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.office_address_road" name="office_address_road" placeholder="" required>
+          <div class="help-block" ng-show="formS3.office_address_road.$invalid && !formS3.office_address_road.$pristine">
+            <p ng-show="formS3.office_address_road.$error.required">* โปรดกรอกถนน</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS3.office_address_tumbon.$invalid && !formS3.office_address_tumbon.$pristine}">
+          <span class="input-label ">ตำบล <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.office_address_tumbon" name="office_address_tumbon" placeholder="" required>
+          <div class="help-block" ng-show="formS3.office_address_tumbon.$invalid && !formS3.office_address_tumbon.$pristine">
+            <p ng-show="formS3.office_address_tumbon.$error.required">* โปรดกรอกถตำบล</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS3.office_address_amphur.$invalid && !formS3.office_address_amphur.$pristine}">
+          <span class="input-label ">อำเภอ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.office_address_amphur" name="office_address_amphur" placeholder="" required>
+          <div class="help-block" ng-show="formS3.office_address_amphur.$invalid && !formS3.office_address_amphur.$pristine">
+            <p ng-show="formS3.office_address_amphur.$error.required">* โปรดกรอกอำเภอ</p>
+          </div>
+        </label>
+
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-60" ng-class="{ 'has-errors' : formS3.office_address_province.$invalid && !formS3.office_address_province.$pristine}">
+            <span class="input-label ">จังหวัด <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="office_address_province" ng-model="application.office_address_province" placeholder="" required>
+            <div class="help-block" ng-show="formS3.office_address_province.$invalid && !formS3.office_address_province.$pristine">
+              <p ng-show="formS3.office_address_province.$error.required">* โปรดกรอกจังหวัด</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-40" ng-class="{ 'has-errors' :
+              (formS3.office_address_postcode1.$invalid && !formS3.office_address_postcode1.$pristine) ||
+              (formS3.office_address_postcode2.$invalid && !formS3.office_address_postcode2.$pristine) ||
+              (formS3.office_address_postcode3.$invalid && !formS3.office_address_postcode3.$pristine) ||
+              (formS3.office_address_postcode4.$invalid && !formS3.office_address_postcode4.$pristine) ||
+              (formS3.office_address_postcode5.$invalid && !formS3.office_address_postcode5.$pristine)
+          }">
+            <span class="input-label ">รหัสไปรษณีย์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <div class="row input-row">
+              <input type="text" class="col" pattern="\d*" name="office_address_postcode1" ng-model="application.office_postcode_array[0]" maxlength="1" ng-maxlength="1" tabindex="1" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="office_address_postcode2" ng-model="application.office_postcode_array[1]" maxlength="1" ng-maxlength="1" tabindex="2" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="office_address_postcode3" ng-model="application.office_postcode_array[2]" maxlength="1" ng-maxlength="1" tabindex="3" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="office_address_postcode4" ng-model="application.office_postcode_array[3]" maxlength="1" ng-maxlength="1" tabindex="4" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="office_address_postcode5" ng-model="application.office_postcode_array[4]" maxlength="1" ng-maxlength="1" tabindex="5" auto-next required>
+            </div>
+            <div class="help-block" ng-show="
+              (formS3.office_address_postcode1.$invalid && !formS3.office_address_postcode1.$pristine) ||
+              (formS3.office_address_postcode2.$invalid && !formS3.office_address_postcode2.$pristine) ||
+              (formS3.office_address_postcode3.$invalid && !formS3.office_address_postcode3.$pristine) ||
+              (formS3.office_address_postcode4.$invalid && !formS3.office_address_postcode4.$pristine) ||
+              (formS3.office_address_postcode5.$invalid && !formS3.office_address_postcode5.$pristine)
+            ">
+              <p ng-show="
+              formS3.office_address_postcode1.$error.required ||
+              formS3.office_address_postcode2.$error.required ||
+              formS3.office_address_postcode3.$error.required ||
+              formS3.office_address_postcode4.$error.required ||
+              formS3.office_address_postcode5.$error.required ||
+              formS3.office_address_postcode1.$error.pattern ||
+              formS3.office_address_postcode2.$error.pattern ||
+              formS3.office_address_postcode3.$error.pattern ||
+              formS3.office_address_postcode4.$error.pattern ||
+              formS3.office_address_postcode5.$error.pattern
+            ">* โปรดกรอกรหัสไปรษณีย์</p>
+            </div>
+          </label>
+          </label>
+        </div>
+
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_duration_year.$invalid && !formS3.work_duration_year.$pristine}">
+            <span class="input-label ">อายุงาน <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="work_duration_year" pattern="\d*" ng-model="application.work_duration.year" placeholder="ปี" required>
+            <div class="help-block" ng-show="formS3.work_duration_year.$invalid && !formS3.work_duration_year.$pristine">
+              <p ng-show="formS3.work_duration_year.$error.required">* โปรดกรอกอายุงาน</p>
+              <p ng-show="formS3.work_duration_year.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_duration_month.$invalid && !formS3.work_duration_month.$pristine}">
+            <span class="input-label ">&nbsp;</span>
+            <input type="text" name="work_duration_month" pattern="\d*" ng-model="application.work_duration.month" placeholder="เดือน" required>
+            <div class="help-block" ng-show="formS3.work_duration_month.$invalid && !formS3.work_duration_month.$pristine">
+              <p ng-show="formS3.work_duration_month.$error.required">* โปรดกรอกอำเภอ</p>
+              <p ng-show="formS3.work_duration_month.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_salary.$invalid && !formS3.work_salary.$pristine}">
+            <span class="input-label ">รายได้ต่อเดือน <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="work_salary" pattern="\d*" ng-model="application.work_salary" placeholder="บาท" required>
+            <div class="help-block" ng-show="formS3.work_salary.$invalid && !formS3.work_salary.$pristine">
+              <p ng-show="formS3.work_salary.$error.required">* โปรดกรอกอำเภอ</p>
+              <p ng-show="formS3.work_salary.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+        </div>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS3.business_type.$invalid && !formS3.business_type.$pristine}">
+          <span class="input-label ">ประเภทธุรกิจ <i class="ion-asterisk active w3-text-red"></i></span>
+          <select name="business_type" ng-model="application.business_type" class="col" required>
+            <option value="sole" selected>กิจการของคนเดียว</option>
+            <option value="partnership" >ห้างหุ้นส่วน</option>
+            <option value="juristic_partnership" >ห้างหุ้นส่วนสามัญนิติบุคคล</option>
+            <option value="limited_artnership" >ห้างหุ้นส่วนจากํด</option>
+            <option value="limited_company">บริษัทจำกัด</option>
+            <option value="public_limited_Company">บริษัทมหาชนจำกัด</option>
+            <option value="established_under_specific_law)">องค์การธุรกิจจัดตั้งฯ</option>
+            <option value="state_enterprise">รัฐวิสาหกิจ</option>
+          </select>
+          <div class="help-block" ng-show="formS3.business_type.$invalid && !formS3.business_type.$pristine">
+            <p ng-show="formS3.business_type.$error.required">* โปรดเลือกประเภทธุรกิจ</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS3.work_type.$invalid && !formS3.work_type.$pristine}">
+          <span class="input-label ">ประเภทงาน <i class="ion-asterisk active w3-text-red"></i></span>
+          <select name="work_type" ng-model="application.work_type" class="col">
+            <option value="law" selected>กฎหมาย</option>
+            <option value="farmer">เกษตร/ปศุสัตว์/ประมง/เหมืองแร่</option>
+            <option value="saler">เจ้าหน้าที่ขาย-การตลาด / พนักงานขาย-การตลาด</option>
+            <option value="marketing">ประสานงานการขาย-การตลาด</option>
+            <option value="manager">ผู้จัดการ/ผู้ช่วยผู้จัดการขาย-การตลาด</option>
+            <option value="academic">งานการศึกษา/นักวิชาการ/อาจารย์</option>
+            <option value="admin">ธุรการ/ประสานงาน/คีย์ข้อมูล</option>
+            <option value="secretary">เลขานุการ</option>
+            <option value="customer_service">ประชาสัมพันธ์/บริการลูกค้า</option>
+            <option value="accountant">บัญชี/การเงิน-การธนาคาร</option>
+            <option value="training">บุคคล/ฝึกอบรม/Training</option>
+            <option value="logistics">จัดซื้อ/คลังสินค้า/logistics</option>
+            <option value="shipping">นำเข้า/ส่งออก/Shipping/งานด้านต่างประเทศ</option>
+            <option value="factory">โรงงาน/การผลิต/ควบคุมคุณภาพ</option>
+            <option value="mechanic">ช่างยนต์/ช่างกลโรงงาน/ช่างเทคนิคอุตสาหกรรม</option>
+            <option value="electrician">ช่างไฟฟ้า/ช่างอิเลกทรอนิกส์/ช่างโลหะ</option>
+            <option value="computer">ช่างคอมพิวเตอร์/ช่างเทคนิคคอมพิวเตอร์</option>
+            <option value="artisans_mineral">ช่างจิวเวอร์รี่/ช่างทอง-เงิน</option>
+            <option value="designer">ดีไซด์เนอร์/ช่างตัดเย็บเสื้อผ้า/ช่างแพทเทิร์น</option>
+            <option value="foreman">โฟร์แมน/ช่างก่อสร้าง/ช่างไม้</option>
+            <option value="drawing">งานเขียนแบบ/Drawing</option>
+            <option value="artistic">ศิลปะ/จิตรกรรม/ออกแบบผลิตภัณฑ์</option>
+            <option value="programmer">Programmer/System Admin/IT</option>
+            <option value="web_programer">Web programer/Webmaster</option>
+            <option value="web_design">Web Design/Graphic Design</option>
+            <option value="sale_engineer">วิศวกรขาย/Sale Engineer</option>
+            <option value="mechanical_engineer">วิศวกรเครื่องกล/โรงงาน/วิศวกรอุตสาหกรรม</option>
+            <option value="electric_engineer">วิศวกรไฟฟ้า/วิศวกรอิเลกทรอนิกส์</option>
+            <option value="civil_engineer">วิศวกรโยธา/วิศวกรก่อสร้าง</option>
+            <option value="communication">วิศวกรสื่อสาร/โทรคมนาคม</option>
+            <option value="computer_engineer">วิศวกรคอมพิวเตอร์/วิศวกรระบบ</option>
+            <option value="architecture">สถาปัตยกรรม/ออกแบบตกแต่ง/ประเมินราคา</option>
+            <option value="creative">งานโฆษณา/ขายโฆษณา/Creative/ช่างภาพ</option>
+            <option value="entertainment">งานบันเทิง/นักแสดง/พริ๊ตตี้/นักดนตรี/นักร้อง</option>
+            <option value="health_beauty">สุขภาพความงาม/เสริมสวย/สปา/ฟิตเนส</option>
+            <option value="executives">ผู้จัดการทั่วไป/ผู้อำนวยการ/งานผู้บริหาร</option>
+            <option value="business_development">พัฒนาธุรกิจ/พัฒนาองค์กร ISO</option>
+            <option value="economics">เศรษฐศาสตร์/สถิติ/งานวิจัย/หุ้น/การประกันภัย</option>
+            <option value="editor">นักข่าว/บรรณาธิการ/นักเขียน/แปลภาษา</option>
+            <option value="travel">การโรงแรม/ล่าม/ไกด์/มัคคุเทศก์/งานท่องเที่ยว</option>
+            <option value="service">งานบริการทั่วไป/บริกร/พนักงานเสิร์ฟ</option>
+            <option value="food_sevice">งานด้านอาหาร-เครื่องดื่ม/กุ๊ก/บาร์เทนเดอร์</option>
+            <option value="medical">แพทย์/พยาบาล/เภสัช</option>
+            <option value="science">วิทยาศาสตร์/เคมี/ชีวะ/สิ่งแวดล้อม/ภูมิศาสตร์</option>
+            <option value="food_science">วิทยาศาสตร์อาหาร/โภชนาการ</option>
+            <option value="security">เจ้าหน้าที่ความปลอดภัยวิชาชีพ(จป.วิชาชีพ)</option>
+            <option value="etc">ส่งเอกสาร/ส่งผลิตภัณฑ์/ขับรถ/แม่บ้าน/รปภ.</option>
+            <option value="part_time"> Part-time/นักศึกษาฝึกงาน</option>
+          </select>
+          <div class="help-block" ng-show="formS3.work_type.$invalid && !formS3.work_type.$pristine">
+            <p ng-show="formS3.work_type.$error.required">* โปรดเลือกประเภทงาน</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_appointment.$invalid && !formS3.work_appointment.$pristine}">
+          <span class="input-label ">ตำแหน่งงาน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="work_appointment" ng-model="application.work_appointment" placeholder="" required>
+          <div class="help-block" ng-show="formS3.work_appointment.$invalid && !formS3.work_appointment.$pristine">
+            <p ng-show="formS3.work_appointment.$error.required">* โปรดกรอกตำแหน่งงาน</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_status.$invalid && !formS3.work_status.$pristine}">
+          <span class="input-label ">สถานภาพการจ้างงาน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="work_status" ng-model="application.work_status" placeholder="" required>
+          <div class="help-block" ng-show="formS3.work_status.$invalid && !formS3.work_status.$pristine">
+            <p ng-show="formS3.work_status.$error.required">* โปรดกรอกสถานภาพการจ้างงาน</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS3.work_salary_pay.$invalid && !formS3.work_salary_pay.$pristine}">
+          <span class="input-label ">วิธีรับเงินเดือน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="work_salary_pay" ng-model="application.work_salary_pay" placeholder="" required>
+          <div class="help-block" ng-show="formS3.work_salary_pay.$invalid && !formS3.work_salary_pay.$pristine">
+            <p ng-show="formS3.work_salary_pay.$error.required">* โปรดกรอกวิธีรับเงินเดือน</p>
+          </div>
+        </label>
+
+        <div class="row row-bottom">
+          <div class="col col-bottom">
+            <button class="button button-block button-assertive" type="submit" id="button-step-3" ng-disabled="formS3.$invalid">ต่อไป</button>
+            <!--<button class="button button-block button-assertive" type="submit" >ต่อไป</button>-->
+          </div>
+        </div>
+      </form>
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>

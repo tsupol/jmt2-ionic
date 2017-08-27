@@ -1,0 +1,54 @@
+<ion-view view-title="Payment Details" ng-controller="PaymentDetailController">
+  <ion-nav-title>
+    Payment Details
+  </ion-nav-title>
+  <ion-content>
+    <ul class="list">
+      <li class="item">
+        <div class="row">
+          <div class="col">
+            <!--<span class="strong">Reciept:</span>-->
+            <span class="strong">ยอดรับชำระ:</span>
+          </div>
+        </div>
+        <div class="row row-bottom">
+          <div class="col col-flex-center text-center">
+            <h1 class="inline no-margin">{{ (item.amount | number:0) || '-' }}</h1>
+            <h4 class="inline padding-left">บาท</h4>
+          </div>
+        </div>
+      </li>
+      <li class="item item-divider">
+        Payment Details
+      </li>
+      <li class="item">
+        <!--<span class="strong">Paid by:</span>-->
+        <span class="strong">ช่องทางการชำระเงิน:</span>
+        <span class="item-note">{{ item.payment_type || 'N/A' }}</span>
+      </li>
+      <li class="item">
+        <!--<span class="strong">Paid on:</span>-->
+        <span class="strong">วันที่ จ่าย:</span>
+        <span class="item-note">{{ item.payment_date | amDateFormat:'DD/MM/YYYY' }}</span>
+      </li>
+      <!--<li class="item">-->
+        <!--<span class="strong">Payment status:</span>-->
+        <!--<span class="item-note capitalize">{{ item.status }}</span>-->
+      <!--</li>-->
+      <!--<li class="item">-->
+        <!--<div class="row row-no-padding">-->
+          <!--<div class="col no-padding">-->
+            <!--<span class="strong">Note:</span>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row row-no-padding">-->
+          <!--<div class="col no-padding">-->
+            <!--<p>-->
+              <!--{{ item.note || '-' }}-->
+            <!--</p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</li>-->
+    </ul>
+  </ion-content>
+</ion-view>

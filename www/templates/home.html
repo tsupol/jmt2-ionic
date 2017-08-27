@@ -1,0 +1,123 @@
+<ion-view ng-controller="HomeController" hide-back-button="true">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content scroll="false">
+    <div class="bar bar-header bar-light text-left">
+      <h1 class="title text-left">
+        สวัสดี, คุณ{{ profile.user.name }}
+      </h1>
+    </div>
+
+    <div class="container has-header-bar home-container">
+      <div class="row row-no-padding">
+        <div class="col">
+          <div ng-include="'templates/promotion.carousel.html'"></div>
+        </div>
+      </div>
+      <div class="row row-no-padding">
+        <div class="col text-center">
+         <h3 class="no-margin padding">เครดิตของคุณ</h3>
+        </div>
+      </div>
+      <!--<div class="row">-->
+        <!--<div class="col text-center">-->
+          <!--Your total payment for <strong>{{ currentTime | amDateFormat:'MMMM' }}</strong>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="row no-padding relative-container" style="flex: 1">
+        <div class="col text-center progress-wrapper-container">
+          <div class="progress-wrapper">
+            <div class="progress-legend">
+              <div class="col text-center amount">
+                <!--<h5 class="">วงเงินคงเหลือ<br/>ณ วันที่ {{ profile.summary.imported_at | amDateFormat:'DD/MM/YYYY'}}</h5>-->
+                <h5 class="">วงเงินคงเหลือ<br/>ณ วันที่ {{ profile.summary.imported_at || '-' }}</h5>
+                <h1 class="no-margin">{{ (profile.summary.credit_left | number:2) || '-' }}</h1>
+                <h5 class="">จากวงเงิน {{ (profile.summary.credit_limit | number:2) || '-' }}</h5>
+                <h5 class=""><a class="assertive no-underline" ui-sref="app.loan.overview">ดูรายละเอียด</a></h5>
+              </div>
+            </div>
+
+            <round-progress
+              max="profile.summary.credit_limit"
+              current="profile.summary.credit_left"
+              color="url(#availableLoanAmount)"
+              bgcolor="#eaeaea"
+              radius="100"
+              stroke="12.5"
+              semi="false"
+              rounded="true"
+              clockwise="true"
+              responsive="true"
+              duration="800"
+              animation="easeInOutQuart"
+              animation-delay="0">
+              <svg>
+                <linearGradient id="availableLoanAmount" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="5%"  stop-color="#FF9E4E"/>
+                  <stop offset="95%" stop-color="#FF6A4E"/>
+                </linearGradient>
+              </svg>
+            </round-progress>
+          </div>
+        </div>
+
+        <div class="col text-left" style="left: 0;bottom: 0;">
+          <h6>ครบกำหนดชำระ</h6>
+          <!--<h6>{{ profile.summary.due_date | amDateFormat:'DD/MM/YYYY' }}</h6>-->
+          <h6>{{ profile.summary.due_date || '-' }}</h6>
+        </div>
+      </div>
+
+      <div class="row row-no-padding">
+        <div class="col text-left">
+          <h3 class="no-margin padding">เมนูลัด</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center" ui-sref="app.loan.overview">
+          <div class="menu-icon balance">
+            <i class="jmt-balance"></i>
+          </div>
+          <h5 class="block strong padding-top padding-bottom">ยอดที่ต้องชำระ</h5>
+        </div>
+        <div class="col text-center" ui-sref="app.payment.list">
+          <div class="menu-icon history">
+            <i class="jmt-history"></i>
+          </div>
+          <h5 class="block strong padding-top padding-bottom">ประวัติ<br/>การชำระเงิน</h5>
+        </div>
+        <div class="col text-center" ui-sref="app.store.map">
+          <div class="menu-icon pay">
+            <i class="jmt-pay"></i>
+          </div>
+          <h5 class="block strong padding-top padding-bottom">ค้นหาสาขา<br/>เจมาร์ท</h5>
+        </div>
+        <div class="col text-center" ui-sref="app.settings">
+          <div class="menu-icon setting">
+            <i class="jmt-setting"></i>
+          </div>
+          <h5 class="block strong padding-top padding-bottom">ตั้งค่า</h5>
+        </div>
+      </div>
+      <!--<div class="row">-->
+        <!--<div class="col">-->
+          <!--<div class="list">-->
+            <!--<a class="item" ui-sref="app.loan.list">-->
+              <!--View All Your Loans-->
+            <!--</a>-->
+            <!--<a class="item" ui-sref="app.payment.list">-->
+              <!--Payment History-->
+            <!--</a>-->
+            <!--<a class="item" href="#" ng-click="openLoanApplication()">-->
+              <!--Apply New Loans-->
+            <!--</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+  </ion-content>
+</ion-view>

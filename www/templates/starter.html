@@ -1,0 +1,32 @@
+<div ng-controller="StarterPageController">
+  <ion-header-bar class="bar-assertive">
+    <div class="app-title" ng-click="changeEnv()">
+      <h4 class="title">JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-header-bar>
+
+  <ion-view hide-back-button="true">
+    <ion-content class="flex-center starter-page" scroll="false">
+      <!--<div class="logo-container">-->
+      <!--<img class="logo" src="img/logo.png"/>-->
+      <!--</div>-->
+
+      <div class="col-flex-center" style="height: 25vh;padding: 5vh;"><h3 class="strong">ยินดีต้อนรับ</h3></div>
+
+      <div class="container flex-start">
+        <div class="button-container">
+          <button class="button button-block button-login" ng-click="checkLogin()">
+            เข้าสู่ระบบ
+          </button>
+        </div>
+        <div><h3>หรือ</h3></div>
+        <div class="button-container">
+          <button class="button button-block button-signup" ng-click="signupContract()">
+            สมัครสัญญาสินเชื่อหมุนเวียนส่วนบุคคล
+          </button>
+        </div>
+      </div>
+
+    </ion-content>
+  </ion-view>
+</div>

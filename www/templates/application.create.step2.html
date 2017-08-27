@@ -1,0 +1,190 @@
+<ion-view ng-controller="ApplicationCreateStep2Controller" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container" scroll="true">
+    <br>
+    <h4 class="text-center"><b>Step 2 : ที่อยู่ปัจจุบัน</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+    <div class="list">
+      <form class="full-size" name="formS2" ng-submit="next()" novalidate>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-67" ng-class="{ 'has-errors' : formS2.tel.$invalid && !formS2.tel.$pristine}">
+            <span class="input-label ">โทรศัพท์บ้าน <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" ng-model="application.tel" name="tel" pattern="\d*" placeholder="" required>
+            <div class="help-block" ng-show="formS2.tel.$invalid && !formS2.tel.$pristine">
+              <p ng-show="formS2.name_th.$error.required">* โปรดกรอกเบอร์โทรศัพท์บ้าน</p>
+              <p ng-show="formS2.name_th.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-33">
+            <span class="input-label ">ต่อ</span>
+            <input type="text" ng-model="application.tel_link" placeholder="">
+          </label>
+        </div>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col" ng-class="{ 'has-errors' : formS2.address_number.$invalid && !formS2.address_number.$pristine}">
+            <span class="input-label ">เลขที่ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" ng-model="application.address_number" name="address_number" placeholder="" required>
+            <div class="help-block" ng-show="formS2.address_number.$invalid && !formS2.address_number.$pristine">
+              <p ng-show="formS2.address_number.$error.required">* โปรดกรอกบ้านเลขที่</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">หมู่ที่</span>
+            <input type="text" ng-model="application.address_moo" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">หมู่บ้าน/อาคาร</span>
+            <input type="text" ng-model="application.address_village" placeholder="">
+          </label>
+        </div>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ชั้นที่</span>
+            <input type="text" ng-model="application.address_floor" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ห้อง</span>
+            <input type="text" ng-model="application.address_room" placeholder="">
+          </label>
+          <label class="item item-input item-stacked-label col">
+            <span class="input-label ">ซอย</span>
+            <input type="text" ng-model="application.address_soi" placeholder="">
+          </label>
+        </div>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS2.address_road.$invalid && !formS2.address_road.$pristine}">
+          <span class="input-label ">ถนน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.address_road" name="address_road" placeholder="" required>
+          <div class="help-block" ng-show="formS2.address_road.$invalid && !formS2.address_road.$pristine">
+            <p ng-show="formS2.address_road.$error.required">* โปรดกรอกถนน</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS2.address_tumbon.$invalid && !formS2.address_tumbon.$pristine}">
+          <span class="input-label ">ตำบล <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.address_tumbon" name="address_tumbon" placeholder="" required>
+          <div class="help-block" ng-show="formS2.address_tumbon.$invalid && !formS2.address_tumbon.$pristine">
+            <p ng-show="formS2.address_tumbon.$error.required">* โปรดกรอกถตำบล</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS2.address_amphur.$invalid && !formS2.address_amphur.$pristine}">
+          <span class="input-label ">อำเภอ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" ng-model="application.address_amphur" name="address_amphur" placeholder="" required>
+          <div class="help-block" ng-show="formS2.address_amphur.$invalid && !formS2.address_amphur.$pristine">
+            <p ng-show="formS2.address_amphur.$error.required">* โปรดกรอกอำเภอ</p>
+          </div>
+        </label>
+
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-60" ng-class="{ 'has-errors' : formS2.address_province.$invalid && !formS2.address_province.$pristine}">
+            <span class="input-label ">จังหวัด <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="address_province" ng-model="application.address_province" placeholder="" required>
+            <div class="help-block" ng-show="formS2.address_province.$invalid && !formS2.address_province.$pristine">
+              <p ng-show="formS2.address_province.$error.required">* โปรดกรอกจังหวัด</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-40" ng-class="{ 'has-errors' :
+              (formS2.address_postcode1.$invalid && !formS2.address_postcode1.$pristine) ||
+              (formS2.address_postcode2.$invalid && !formS2.address_postcode2.$pristine) ||
+              (formS2.address_postcode3.$invalid && !formS2.address_postcode3.$pristine) ||
+              (formS2.address_postcode4.$invalid && !formS2.address_postcode4.$pristine) ||
+              (formS2.address_postcode5.$invalid && !formS2.address_postcode5.$pristine)
+          }">
+            <span class="input-label ">รหัสไปรษณีย์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <div class="row input-row">
+              <input type="text" class="col" pattern="\d*" name="address_postcode1" ng-model="application.home_postcode_array[0]" maxlength="1" ng-maxlength="1" tabindex="1" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="address_postcode2" ng-model="application.home_postcode_array[1]" maxlength="1" ng-maxlength="1" tabindex="2" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="address_postcode3" ng-model="application.home_postcode_array[2]" maxlength="1" ng-maxlength="1" tabindex="3" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="address_postcode4" ng-model="application.home_postcode_array[3]" maxlength="1" ng-maxlength="1" tabindex="4" auto-next required>
+              <input type="text" class="col" pattern="\d*" name="address_postcode5" ng-model="application.home_postcode_array[4]" maxlength="1" ng-maxlength="1" tabindex="5" auto-next required>
+            </div>
+            <div class="help-block" ng-show="
+              (formS2.address_postcode1.$invalid && !formS2.address_postcode1.$pristine) ||
+              (formS2.address_postcode2.$invalid && !formS2.address_postcode2.$pristine) ||
+              (formS2.address_postcode3.$invalid && !formS2.address_postcode3.$pristine) ||
+              (formS2.address_postcode4.$invalid && !formS2.address_postcode4.$pristine) ||
+              (formS2.address_postcode5.$invalid && !formS2.address_postcode5.$pristine)
+            ">
+              <p ng-show="
+              formS2.address_postcode1.$error.required ||
+              formS2.address_postcode2.$error.required ||
+              formS2.address_postcode3.$error.required ||
+              formS2.address_postcode4.$error.required ||
+              formS2.address_postcode5.$error.required ||
+              formS2.address_postcode1.$error.pattern ||
+              formS2.address_postcode2.$error.pattern ||
+              formS2.address_postcode3.$error.pattern ||
+              formS2.address_postcode4.$error.pattern ||
+              formS2.address_postcode5.$error.pattern
+            ">* โปรดกรอกรหัสไปรษณีย์</p>
+            </div>
+          </label>
+          </label>
+        </div>
+
+        <label class="item item-input  item-stacked-label" ng-class="{ 'has-errors' : formS2.residence_type.$invalid && !formS2.residence_type.$pristine}">
+          <span class="input-label ">ลักษณะที่อยู่ <i class="ion-asterisk active w3-text-red"></i></span>
+          <select name="residence_type" ng-model="application.residence_type" class="col" required>
+            <option value="house" selected>บ้าน</option>
+            <option value="apartment">ห้องเช่า</option>
+            <option value="condo">คอนโด</option>
+          </select>
+          <div class="help-block" ng-show="formS2.residence_type.$invalid && !formS2.residence_type.$pristine">
+            <p ng-show="formS2.residence_type.$error.required">* โปรดเลือกลักษณะที่อยู่</p>
+          </div>
+        </label>
+
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col-33" ng-class="{ 'has-errors' : formS2.dweller_count.$invalid && !formS2.dweller_count.$pristine}" style="padding-left: 0;padding-right: 0">
+            <span class="input-label ">จำนวนผู้อยู่อาศัย<i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="dweller_count" pattern="\d*" ng-model="application.dweller_count" placeholder="คน" required>
+            <div class="help-block" ng-show="formS2.dweller_count.$invalid && !formS2.dweller_count.$pristine">
+              <p ng-show="formS2.dweller_count.$error.required">*โปรดกรอกจำนวน</p>
+              <p ng-show="formS2.dweller_count.$error.pattern">* ข้อมูลตัวเลขเท่านั้น </p>
+            </div>
+          </label>
+          <div class="col-66" ng-class="{ 'has-errors' :
+                formS2.dweller_range_year.$invalid && !formS2.dweller_range_year.$pristine ||
+                formS2.dweller_range_month.$invalid && !formS2.dweller_range_month.$pristine
+            }">
+            <label class="item item-input">ระยะเวลาที่อาศัย<i class="ion-asterisk active w3-text-red"></i></label>
+            <div class="row label-row">
+              <label class="item item-input item-stacked-label col">
+                <!--<span class="input-label ">ระยะเวลาที่อาศัย<i class="ion-asterisk active w3-text-red"></i></span>-->
+                <input type="text" name="dweller_range_year" ng-model="application.dweller_range_year"  pattern="\d*" placeholder="ปี" required>
+              </label>
+              <label class="item item-input item-stacked-label col">
+                <!--<span class="input-label ">&nbsp;</span>-->
+                <input type="text" name="dweller_range_month" ng-model="application.dweller_range_month"  pattern="\d*" placeholder="เดือน" required>
+                <div class="help-block" ng-show="
+                  (formS2.dweller_range_year.$invalid && !formS2.dweller_range_year.$pristine) ||
+                  (formS2.dweller_range_month.$invalid && !formS2.dweller_range_month.$pristine)
+                ">
+                  <p ng-show="formS2.dweller_range_month.$error.required || formS2.dweller_range_year.$error.required">*โปรดกรอกจำนวน</p>
+                  <p ng-show="formS2.dweller_range_month.$error.pattern || formS2.dweller_range_year.$error.pattern">*ข้อมูลตัวเลขเท่านั้น</p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-bottom">
+          <div class="col col-bottom">
+            <button class="button button-block button-assertive" type="submit" id="button-step-2" ng-disabled="formS2.$invalid">ต่อไป</button>
+            <!--<button class="button button-block button-assertive" type="submit" >ต่อไป</button>-->
+          </div>
+        </div>
+      </form>
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view view-title="Payment History" ng-controller="PaymentListController">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content scroll="true" class="container-list-payment">
+    <div class="title-payment h2">
+      ประวัติการชำระเงิน
+      <small style="font-size: 1vh;display: inherit;">(แสดงรายการชำระย้อนหลัง 90 วัน)</small>
+    </div>
+    <div class="no-item-payment" ng-if="!profile.list_payments || profile.list_payments.length == 0">
+      ไม่มีรายการชำระเงินภายในรอบเดือนนี้
+    </div>
+    <div class="list" ng-repeat="payment in profile.list_payments track by $index">
+      <div class="item item-divider">
+        {{payment.title}}
+      </div>
+      <div class="item item-payment" ng-repeat="obj in payment.list track by $index">
+        <div class="header" on-tap="toggleGroup(obj)">
+          <div class="item-title" style="overflow: initial;">
+            <div class="h4 bold">{{obj.title}}</div>
+            <div class="h5">ช่องทางการชำระ: {{obj.paid_channel || '-'}}</div>
+            <!--<div class="h5">วันที่ชำระ: {{(obj.pay_date | amDateFormat:'DD/MM/YYYY') || '-'}}</div>-->
+            <div class="h5">วันที่ชำระ: {{obj.pay_date || '-'}}</div>
+          </div>
+          <!--<div class="item-icon">-->
+            <!--<i class="fa fa-fw" ng-class="{'fa-angle-down':!isGroupShown(obj), 'fa-angle-right':isGroupShown(obj)}" aria-hidden="true"></i>-->
+          <!--</div>-->
+          <div class="item-amount">{{displayAmount(obj.amount)}}</div>
+        </div>
+        <!--<div class="body" ng-show="isGroupShown(obj)" ng-bind-html="obj.content"></div>-->
+        <div class="body"></div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

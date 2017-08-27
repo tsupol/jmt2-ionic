@@ -1,0 +1,50 @@
+<ion-view>
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech</h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content ng-controller="StoreMapController">
+    <div class="container store-container flex-start">
+      <div class="row row-center">
+        <div class="col text-center">
+          <h3>ค้นหาสาขาเจมาร์ท</h3>
+        </div>
+      </div>
+      <div class="row row-no-padding row-center" ng-if="$root.currentLocation.latitude && $root.currentLocation.longitude">
+        <div class="col text-center">
+          <div>
+            <ng-map style="height: 40vh !important;" center="[{{ $root.currentLocation.latitude }}, {{ $root.currentLocation.longitude }}]" zoom="{{ zoomLevel }}">
+              <marker centered="true" position="[{{ $root.currentLocation.latitude }}, {{ $root.currentLocation.longitude }}]" icon="{path:'CIRCLE', scale: 5,strokeColor:'#6666FF'}" ></marker>
+              <marker ng-repeat="store in storeList | orderBy:'+distance' | limitTo: 5 " title="{{ item.name }}" position="{{ store.geo_lat }}, {{ store.geo_long }}" z-index="{{ $index }}"></marker>
+            </ng-map>
+          </div>
+        </div>
+      </div>
+      <div class="row row-no-padding">
+        <div class="col">
+          <ul class="list">
+            <li class="item item-divider">
+              <h3>สาขาเจมาร์ทใกล้เคียง</h3>
+            </li>
+            <li class="item no-padding" ng-repeat="store in storeList | orderBy:'+distance' | limitTo: 5" ng-click="openStoreDetail(store.id)">
+              <div class="row row-center">
+                <div class="col col-10 text-center">
+                  <h1><i class="icon ion-location positive"></i></h1>
+                </div>
+                <div class="col col-60 col-center justify-center multiline-wrap store-name">
+                  <div>{{ store.name }}</div>
+                  <!--<p>{{ store.description || "" }}</p>-->
+                </div>
+                <div class="col col-30 text-right col-bottom">
+                  <div class="h2 inline strong">{{ showDistance(store.distance) }} <small>km</small></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

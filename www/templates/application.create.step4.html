@@ -1,0 +1,92 @@
+<ion-view ng-controller="ApplicationCreateStep4Controller" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container" scroll="true">
+    <br>
+    <h4 class="text-center"><b>Step 4 : บุคคลอ้างอิง</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+    <div class="list">
+      <form class="full-size" name="formS4" ng-submit="next()" novalidate>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS4.reference1_name.$invalid && !formS4.reference1_name.$pristine}">
+          <span class="input-label ">1. ชื่อ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="reference1_name" ng-model="application.reference1_name" placeholder="" required>
+          <div class="help-block" ng-show="formS4.reference1_name.$invalid && !formS4.reference1_name.$pristine">
+            <p ng-show="formS4.reference1_name.$error.required">* โปรดกรอกชื่อ</p>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS4.reference1_surname.$invalid && !formS4.reference1_surname.$pristine}">
+          <span class="input-label ">นามสกุล <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="reference1_surname" ng-model="application.reference1_surname" placeholder="" required>
+          <div class="help-block" ng-show="formS4.reference1_surname.$invalid && !formS4.reference1_surname.$pristine">
+            <p ng-show="formS4.reference1_surname.$error.required">* โปรดกรอกนามสกุล</p>
+          </div>
+        </label>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-50" ng-class="{ 'has-errors' : formS4.reference1_tel.$invalid && !formS4.reference1_tel.$pristine}">
+            <span class="input-label ">เบอร์โทรศัพท์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="reference1_tel" pattern="\d*" ng-model="application.reference1_tel" placeholder="" required>
+            <div class="help-block" ng-show="formS4.reference1_tel.$invalid && !formS4.reference1_tel.$pristine">
+              <p ng-show="formS4.reference1_tel.$error.required">* โปรดกรอกเบอร์โทรศัพท์</p>
+              <p ng-show="formS4.reference1_tel.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-50" ng-class="{ 'has-errors' : formS4.reference1_relation.$invalid && !formS4.reference1_relation.$pristine}">
+            <span class="input-label ">ความสัมพันธ์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="reference1_relation" ng-model="application.reference1_relation" placeholder="" required>
+            <div class="help-block" ng-show="formS4.reference1_relation.$invalid && !formS4.reference1_relation.$pristine">
+              <p ng-show="formS4.reference1_relation.$error.required">* โปรดกรอกความสัมพันธ์</p>
+              <!--<p ng-show="formS4.reference1_relation.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>-->
+            </div>
+          </label>
+        </div>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS4.reference2_name.$invalid && !formS4.reference2_name.$pristine}">
+          <span class="input-label ">2. ชื่อ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="reference2_name" ng-model="application.reference2_name" placeholder="" required>
+          <div class="help-block" ng-show="formS4.reference2_name.$invalid && !formS4.reference2_name.$pristine">
+            <p ng-show="formS4.reference2_name.$error.required">* โปรดกรอกชื่อ</p>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS4.reference2_surname.$invalid && !formS4.reference2_surname.$pristine}">
+          <span class="input-label ">นามสกุล <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="reference2_surname" ng-model="application.reference2_surname" placeholder="" required>
+          <div class="help-block" ng-show="formS4.reference2_surname.$invalid && !formS4.reference2_surname.$pristine">
+            <p ng-show="formS4.reference2_surname.$error.required">* โปรดกรอกนามสกุล</p>
+          </div>
+        </label>
+        <div class="row label-row">
+          <label class="item item-input item-stacked-label col col-50" ng-class="{ 'has-errors' : formS4.reference2_tel.$invalid && !formS4.reference2_tel.$pristine}">
+            <span class="input-label ">เบอร์โทรศัพท์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="reference2_tel" pattern="\d*" ng-model="application.reference2_tel" placeholder="" required>
+            <div class="help-block" ng-show="formS4.reference2_tel.$invalid && !formS4.reference2_tel.$pristine">
+              <p ng-show="formS4.reference2_tel.$error.required">* โปรดกรอกเบอร์โทรศัพท์</p>
+              <p ng-show="formS4.reference2_tel.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>
+            </div>
+          </label>
+          <label class="item item-input item-stacked-label col col-50" ng-class="{ 'has-errors' : formS4.reference2_relation.$invalid && !formS4.reference2_relation.$pristine}">
+            <span class="input-label ">ความสัมพันธ์ <i class="ion-asterisk active w3-text-red"></i></span>
+            <input type="text" name="reference2_relation" ng-model="application.reference2_relation" placeholder="" required>
+            <div class="help-block" ng-show="formS4.reference2_relation.$invalid && !formS4.reference2_relation.$pristine">
+              <p ng-show="formS4.reference2_relation.$error.required">* โปรดกรอกความสัมพันธ์</p>
+              <!--<p ng-show="formS4.reference2_relation.$error.pattern">* ข้อมูลตัวเลขเท่านั้น</p>-->
+            </div>
+          </label>
+        </div>
+        <div class="row row-bottom">
+          <div class="col col-bottom">
+            <button class="button button-block button-assertive" type="submit" id="button-step-4" ng-disabled="formS4.$invalid">ต่อไป</button>
+            <!--<button class="button button-block button-assertive" type="submit" >ต่อไป</button>-->
+          </div>
+        </div>
+      </form>
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>

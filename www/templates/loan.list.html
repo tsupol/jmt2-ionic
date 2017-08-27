@@ -1,0 +1,75 @@
+<ion-view view-title="Post Loans" ng-controller="LoanListController">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content scroll="true">
+    <!--<ul class="list">-->
+      <!--<li class="item item-divider no-padding">-->
+        <!--<div class="row row-stretch">-->
+          <!--<div class="col text-left">-->
+            <!--<strong>Loan Overview</strong>-->
+          <!--</div>-->
+          <!--<div class="col text-right">-->
+            <!--<a href="#">view post loans >></a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--<li class="item no-padding" ng-repeat="item in paymentList" ng-click="openPaymentDetail(item.id)">-->
+        <!--&lt;!&ndash;<img ng-src="{{ item.image }}">&ndash;&gt;-->
+        <!--&lt;!&ndash;<h2 ng-bind="item.name"></h2>&ndash;&gt;-->
+        <!--<div class="row">-->
+          <!--<div class="col col-75 truncate">-->
+            <!--<h3><strong>{{ item.name }}</strong></h3>-->
+          <!--</div>-->
+          <!--<div class="col col-bottom text-right">-->
+            <!--<small>remaining</small>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+          <!--<div class="col col-bottom col-40">-->
+            <!--<strong>{{ item.remaining_cycle }}</strong> payments left-->
+          <!--</div>-->
+          <!--<div class="col col-bottom text-right">-->
+            <!--<span>{{ item.due_amount | number:0 }}</span> / <strong>{{ item.remaining_amount | number:0 }}</strong> THB-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <div class="list">
+      <div class="item item-input item-select item-divider">
+        <div class="input-label">
+          Sort by:
+        </div>
+        <select class="stable-bg" ng-model="sortAttribute">
+          <option value="">================</option>
+          <option value="id" selected>Date</option>
+          <option value="name">Name</option>
+          <option value="-remaining_cycle">Remaining Payments</option>
+        </select>
+      </div>
+      <div class="item no-padding" ng-repeat="item in profile.loans | orderBy:sortAttribute" ng-click="openLoanDetail(item.id)">
+        <!--<img ng-src="{{ item.image }}">-->
+        <!--<h2 ng-bind="item.name"></h2>-->
+        <div class="row">
+          <div class="col col-75 truncate">
+            <h3><strong>{{ item.name }}</strong></h3>
+          </div>
+          <div class="col col-bottom text-right">
+            <small>remaining</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-bottom col-40">
+            <strong>{{ item.remaining_cycle }}</strong> payments left
+          </div>
+          <div class="col col-bottom text-right">
+            <span>{{ item.due_amount | number:0 }}</span> / <strong>{{ item.remaining_amount | number:0 }}</strong> THB
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

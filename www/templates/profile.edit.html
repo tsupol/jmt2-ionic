@@ -1,0 +1,332 @@
+<ion-view>
+  <ion-content ng-controller="ProfileEditController" class="register-container">
+    <br>
+    <h4 class="text-center"><b>ข้อมูลผู้ใช้</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+
+    <div class="list">
+
+      <!--<form class="full-size" name="form_login" ng-submit="submit_login()" novalidate>-->
+        <label class="item item-input item-stacked-label">
+          <span class="input-label ">เลขสมาชิก</span>
+          <input type="text" name="member_code" ng-value="profile.user.id" placeholder="" required readonly>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label ">รหัส</span>
+          <input type="password" name="member_code" value="111111" placeholder="" required readonly>
+        </label>
+        <label class="item">
+            <button class="button button-block button-assertive" type="button" ui-sref="app.change_password">แก้ไข</button>
+        </label>
+      <!--</form>-->
+
+      <!--<form class="full-size" name="form_profile" ng-submit="submit()" novalidate>-->
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' :-->
+            <!--(form_profile.idens1.$invalid && !form_profile.idens1.$pristine) ||-->
+            <!--(form_profile.idens2.$invalid && !form_profile.idens2.$pristine) ||-->
+            <!--(form_profile.idens3.$invalid && !form_profile.idens3.$pristine) ||-->
+            <!--(form_profile.idens4.$invalid && !form_profile.idens4.$pristine) ||-->
+            <!--(form_profile.idens5.$invalid && !form_profile.idens5.$pristine) ||-->
+            <!--(form_profile.idens6.$invalid && !form_profile.idens6.$pristine) ||-->
+            <!--(form_profile.idens7.$invalid && !form_profile.idens7.$pristine) ||-->
+            <!--(form_profile.idens8.$invalid && !form_profile.idens8.$pristine) ||-->
+            <!--(form_profile.idens9.$invalid && !form_profile.idens9.$pristine) ||-->
+            <!--(form_profile.idens10.$invalid && !form_profile.idens10.$pristine) ||-->
+            <!--(form_profile.idens11.$invalid && !form_profile.idens11.$pristine) ||-->
+            <!--(form_profile.idens12.$invalid && !form_profile.idens12.$pristine) ||-->
+            <!--(form_profile.idens13.$invalid && !form_profile.idens13.$pristine)-->
+         <!--}">-->
+          <!--<span class="input-label">-->
+            <!--เลขที่บัตรประชาชน  <i class="ion-asterisk active w3-text-red"></i>-->
+          <!--</span>-->
+          <!--<div class="row input-row">-->
+            <!--&lt;!&ndash;<input type="hidden" name="id_card_no" ng-model="profiles.id_card_no" ng-pattern="/^[0-9]{13}$/" required />&ndash;&gt;-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens1" ng-model="profiles.idens[1]" maxlength="1" ng-maxlength="1" tabindex="1" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens2" ng-model="profiles.idens[2]" maxlength="1" ng-maxlength="1" tabindex="2" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens3" ng-model="profiles.idens[3]" maxlength="1" ng-maxlength="1" tabindex="3" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens4" ng-model="profiles.idens[4]" maxlength="1" ng-maxlength="1" tabindex="4" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens5" ng-model="profiles.idens[5]" maxlength="1" ng-maxlength="1" tabindex="5" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens6" ng-model="profiles.idens[6]" maxlength="1" ng-maxlength="1" tabindex="6" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens7" ng-model="profiles.idens[7]" maxlength="1" ng-maxlength="1" tabindex="7" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens8" ng-model="profiles.idens[8]" maxlength="1" ng-maxlength="1" tabindex="8" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens9" ng-model="profiles.idens[9]" maxlength="1" ng-maxlength="1" tabindex="9" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens10" ng-model="profiles.idens[10]" maxlength="1" ng-maxlength="1" tabindex="10" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens11" ng-model="profiles.idens[11]" maxlength="1" ng-maxlength="1" tabindex="11" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens12" ng-model="profiles.idens[12]" maxlength="1" ng-maxlength="1" tabindex="12" auto-next numbers-only required>-->
+            <!--<input type="tel" pattern="\d*" class="col" name="idens13" ng-model="profiles.idens[13]" maxlength="1" ng-maxlength="1" tabindex="13" auto-next numbers-only required>-->
+          <!--</div>-->
+
+          <!--<div class="help-block" ng-show="-->
+              <!--(form_profile.idens1.$invalid && !form_profile.idens1.$pristine) ||-->
+              <!--(form_profile.idens2.$invalid && !form_profile.idens2.$pristine) ||-->
+              <!--(form_profile.idens3.$invalid && !form_profile.idens3.$pristine) ||-->
+              <!--(form_profile.idens4.$invalid && !form_profile.idens4.$pristine) ||-->
+              <!--(form_profile.idens5.$invalid && !form_profile.idens5.$pristine) ||-->
+              <!--(form_profile.idens6.$invalid && !form_profile.idens6.$pristine) ||-->
+              <!--(form_profile.idens7.$invalid && !form_profile.idens7.$pristine) ||-->
+              <!--(form_profile.idens8.$invalid && !form_profile.idens8.$pristine) ||-->
+              <!--(form_profile.idens9.$invalid && !form_profile.idens9.$pristine) ||-->
+              <!--(form_profile.idens10.$invalid && !form_profile.idens10.$pristine) ||-->
+              <!--(form_profile.idens11.$invalid && !form_profile.idens11.$pristine) ||-->
+              <!--(form_profile.idens12.$invalid && !form_profile.idens12.$pristine) ||-->
+              <!--(form_profile.idens13.$invalid && !form_profile.idens13.$pristine)-->
+            <!--">-->
+            <!--<p ng-show="-->
+              <!--form_profile.idens1.$error.required ||-->
+              <!--form_profile.idens2.$error.required ||-->
+              <!--form_profile.idens3.$error.required ||-->
+              <!--form_profile.idens4.$error.required ||-->
+              <!--form_profile.idens5.$error.required ||-->
+              <!--form_profile.idens6.$error.required ||-->
+              <!--form_profile.idens7.$error.required ||-->
+              <!--form_profile.idens8.$error.required ||-->
+              <!--form_profile.idens9.$error.required ||-->
+              <!--form_profile.idens10.$error.required ||-->
+              <!--form_profile.idens11.$error.required ||-->
+              <!--form_profile.idens12.$error.required ||-->
+              <!--form_profile.idens13.$error.required ||-->
+              <!--form_profile.idens1.$error.pattern ||-->
+              <!--form_profile.idens2.$error.pattern ||-->
+              <!--form_profile.idens3.$error.pattern ||-->
+              <!--form_profile.idens4.$error.pattern ||-->
+              <!--form_profile.idens5.$error.pattern ||-->
+              <!--form_profile.idens6.$error.pattern ||-->
+              <!--form_profile.idens7.$error.pattern ||-->
+              <!--form_profile.idens8.$error.pattern ||-->
+              <!--form_profile.idens9.$error.pattern ||-->
+              <!--form_profile.idens10.$error.pattern ||-->
+              <!--form_profile.idens11.$error.pattern ||-->
+              <!--form_profile.idens12.$error.pattern ||-->
+              <!--form_profile.idens13.$error.pattern-->
+            <!--">* โปรดกรอกตัวเลข 13 หลัก</p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label">-->
+          <!--<span class="input-label">คำนำหน้า <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<select ng-model="profiles.prefix" class="col">-->
+            <!--<option value="mr" selected>นาย</option>-->
+            <!--<option value="miss">นางสาว</option>-->
+            <!--<option value="mrs">นาง</option>-->
+          <!--</select>-->
+        <!--</label>-->
+
+        <!--<div class="row" >-->
+          <!--<label class="item item-input item-stacked-label col-67" ng-class="{ 'has-errors' : form_profile.name_th.$invalid && !form_profile.name_th.$pristine}">-->
+            <!--<span class="input-label ">ชื่อ <i class="ion-asterisk active w3-text-red"></i></span>-->
+            <!--<input type="text" name="name_th" minlength="2" ng-model="profiles.name_th" placeholder="" required>-->
+            <!--<div class="help-block" ng-show="form_profile.name_th.$invalid && !form_profile.name_th.$pristine">-->
+              <!--<p ng-show="form_profile.name_th.$error.required">* โปรดกรอกชื่อ</p>-->
+              <!--<p ng-show="form_profile.name_th.$error.minlength">* ชื่ออย่างน้อย2ตัวอักษร</p>-->
+            <!--</div>-->
+          <!--</label>-->
+          <!--<label class="item item-input item-stacked-label col-33" ng-class="{ 'has-errors' : form_profile.nickname_th.$invalid && !form_profile.nickname_th.$pristine}">-->
+            <!--<span class="input-label ">ชื่อเล่น </span>-->
+            <!--<input type="text" name="nickname_th" ng-model="profiles.nickname_th" placeholder="">-->
+            <!--&lt;!&ndash;<div class="help-block" ng-show="form_profile.nickname_th.$invalid && !form_profile.nickname_th.$pristine">&ndash;&gt;-->
+              <!--&lt;!&ndash;<p ng-show="form_profile.nickname_th.$error.minlength">* ชื่ออย่างน้อย2ตัวอักษร</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--</label>-->
+        <!--</div>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form_profile.surname_th.$invalid && !form_profile.surname_th.$pristine}">-->
+          <!--<span class="input-label ">นามสกุล <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<input type="text" name="surname_th" ng-model="profiles.surname_th" placeholder="" required>-->
+          <!--<div class="help-block" ng-show="form_profile.surname_th.$invalid && !form_profile.surname_th.$pristine">-->
+            <!--<p ng-show="form_profile.surname_th.$error.required">* โปรดกรอกนามสกุล</p>-->
+            <!--<p ng-show="form_profile.surname_th.$error.minlength">* นามสกุลอย่างน้อย2ตัวอักษร</p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : form_profile.name_en.$invalid && !form_profile.name_en.$pristine}">-->
+          <!--<span class="input-label ">Name (english) <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<input type="text" name="name_en" ng-model="profiles.name_en" placeholder="" required>-->
+          <!--<div class="help-block" ng-show="form_profile.name_en.$invalid && !form_profile.name_en.$pristine">-->
+            <!--<p ng-show="form_profile.name_en.$error.required">* โปรดกรอกชื่อ(อังกฤษ)</p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form_profile.surname_en.$invalid && !form_profile.surname_en.$pristine}">-->
+          <!--<span class="input-label ">Surname (english) <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<input type="text" name="surname_en" ng-model="profiles.surname_en" placeholder="" required>-->
+          <!--<div class="help-block" ng-show="form_profile.surname_en.$invalid && !form_profile.surname_en.$pristine">-->
+            <!--<p ng-show="form_profile.surname_en.$error.required">* โปรดกรอกชื่อ(อังกฤษ)</p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' :-->
+            <!--form_profile.bday_date.$invalid && !form_profile.bday_date.$pristine ||-->
+            <!--form_profile.bday_month.$invalid && !form_profile.bday_month.$pristine ||-->
+            <!--form_profile.bday_year_th.$invalid && !form_profile.bday_year_th.$pristine-->
+        <!--}">-->
+          <!--<span class="input-label ">วัน เดือน ปีเกิด (พ.ศ.) <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<div class="row input-row">-->
+            <!--<select name="bday_date" ng-model="profiles.bday_date" class="col" ng-options="select.id as select.value for select in date_selects" required>-->
+              <!--<option value="?" selected>เลือก</option>-->
+            <!--</select>-->
+            <!--<select name="bday_month" ng-model="profiles.bday_month" class="col" ng-options="select.id as select.value for select in month_selects" required>-->
+              <!--<option value="?" selected>เลือก</option>-->
+            <!--</select>-->
+            <!--<select name="bday_year" ng-model="profiles.bday_year" class="col" ng-options="select.id as select.value for select in year_selects" required>-->
+              <!--<option value="?" selected></option>-->
+            <!--</select>-->
+          <!--</div>-->
+
+          <!--<div class="help-block" ng-show="-->
+              <!--(form_profile.bday_date.$invalid && !form_profile.bday_date.$pristine) ||-->
+              <!--(form_profile.bday_month.$invalid && !form_profile.bday_month.$pristine) ||-->
+              <!--(form_profile.bday_year.$invalid && !form_profile.bday_year.$pristine)-->
+            <!--">-->
+            <!--<p ng-show="-->
+                <!--form_profile.bday_date.$error.required ||-->
+                <!--form_profile.bday_month.$error.required ||-->
+                <!--form_profile.bday_year.$error.required-->
+            <!--">* โปรดเลือกวัน เดือน ปีเกิด</p>-->
+          <!--</div>-->
+
+        <!--</label>-->
+
+        <!--<label class="item item-input  item-stacked-label">-->
+          <!--<span class="input-label ">สถานภาพ <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<select ng-model="profiles.marital_status" class="col">-->
+            <!--<option value="single" selected>โสด</option>-->
+            <!--<option value="married">แต่งงาน</option>-->
+            <!--<option value="divorced">หย่าร้าง</option>-->
+            <!--<option value="widowed">ม่าย</option>-->
+            <!--<option value="separated">แยกกัน</option>-->
+          <!--</select>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : form_profile.mobile_1.$invalid}">-->
+          <!--<span class="input-label ">โทรศัพท์มือถือ (1) <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<input type="tel" name="mobile_1" pattern="\d*" ng-model="profiles.mobile_1" placeholder="" required minlength="9" maxlength="10">-->
+          <!--<div class="help-block" ng-show="form_profile.mobile_1.$invalid">-->
+            <!--<p ng-show="form_profile.mobile_1.$error.required">* โปรดกรอกหมายเลขโทรศัพท์มือถือ </p>-->
+            <!--<p ng-show="form_profile.mobile_1.$error.pattern || form_profile.mobile_1.$error.minlength || form_profile.mobile_1.$error.maxlength">* กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง </p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form_profile.mobile_2.$invalid}">-->
+          <!--<span class="input-label ">โทรศัพท์มือถือ (2)</span>-->
+          <!--<input type="tel" name="mobile_2" pattern="\d*" ng-model="profiles.mobile_2" minlength="9" maxlength="10" placeholder="">-->
+          <!--<div class="help-block" ng-show="form_profile.mobile_2.$invalid">-->
+            <!--<p ng-show="form_profile.mobile_2.$error.pattern || form_profile.mobile_2.$error.minlength || form_profile.mobile_2.$error.maxlength">* กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง </p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form_profile.contact_time_range.$invalid}">-->
+          <!--<span class="input-label ">ช่วงเวลาที่สะดวกให้ติดต่อ <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<select ng-model="profiles.contact_time_range" name="contact_time_range" class="col" required>-->
+            <!--<option value="08.00-12.00">08.00-12.00</option>-->
+            <!--<option value="12.00-17.00">12.00-17.00</option>-->
+            <!--<option value="17.00-22.00">17.00-22.00</option>-->
+          <!--</select>-->
+          <!--<div class="help-block" ng-show="form_profile.contact_time_range.$invalid">-->
+            <!--<p ng-show="form_profile.mobile_1.$error.required">* โปรดเลือกช่วงเวลา </p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form_profile.document_trans_address_type.$invalid || form_profile.document_address.$invalid}">-->
+          <!--<span class="input-label ">สถานที่ส่งเอกสาร <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<select ng-model="profiles.document_trans_address_type" name="document_trans_location" class="col" required>-->
+            <!--<option value="idcard">ที่อยู่ตามบัตรประชาชน</option>-->
+            <!--<option value="custom">กำหนดเอง</option>-->
+          <!--</select>-->
+          <!--<textarea ng-if="profiles.document_trans_address_type == 'custom'" ng-model="profiles.document_trans_address"-->
+                    <!--name="document_address" style="padding:5px;max-width: 100%;margin-top: 5px;"-->
+                    <!--placeholder="กรอกสถานที่ส่งเองสาร" rows="3" ng-required="profiles.document_trans_address_type == 'custom'"></textarea>-->
+          <!--<div class="help-block" ng-show="form_profile.document_address.$invalid">-->
+            <!--<p ng-show="form_profile.document_address.$error.required">* โปรดเลือกสถานที่จัดส่งเอกสาร </p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : form_profile.email.$invalid}">-->
+          <!--<span class="input-label ">อีเมล <i class="ion-asterisk active w3-text-red"></i></span>-->
+          <!--<input type="email" name="email" ng-model="profiles.email" placeholder="" required>-->
+          <!--<div class="help-block" ng-show="form_profile.email.$invalid">-->
+            <!--<p ng-show="form_profile.email.$error.required">* โปรดกรอกอีเมล์ </p>-->
+          <!--</div>-->
+        <!--</label>-->
+
+        <!--<label class="item">-->
+          <!--<button class="button button-block button-assertive" type="submit" ng-disabled="form_profile.$invalid">แก้ไข</button>-->
+        <!--</label>-->
+      <!--</form>-->
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>
+<!--<ion-view view-title="Edit Profile">
+  <ion-content ng-controller="ProfileEditController">
+    <form action="" ng-submit="submit()">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="first_name" placeholder="John">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="last_name" placeholder="Doe">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="email" placeholder="john.doe@jmt.co.th">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Address1</span>
+          <input type="text" ng-model="address1" placeholder="Enter your address 1">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Address2</span>
+          <input type="text" ng-model="address2" placeholder="Enter your address 2">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            จังหวัด
+          </div>
+          <select ng-model="province">
+            <option>กรุงเทพมหานคร</option>
+            <option selected>เชียงใหม่</option>
+            <option>ภูเก็ต</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            อำเภอ
+          </div>
+          <select ng-model="district">
+            <option>พญาไท</option>
+            <option selected>เมือง</option>
+            <option>บางรัก</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            ตำบล
+          </div>
+          <select ng-model="sub_district">
+            <option>ช้างเผือก</option>
+            <option selected>ช้างคลาน</option>
+            <option>เจ็ดยอด</option>
+          </select>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">รหัสไปรษณีย์</span>
+          <input type="number" ng-model="post_number" maxlength="5" placeholder="10000">
+        </label>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="button button-block button-positive">
+            Save
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </ion-content>
+</ion-view>-->

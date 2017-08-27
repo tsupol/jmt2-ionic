@@ -1,0 +1,37 @@
+<ion-view ng-controller="ApplicationCreateStep6Controller" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container middle">
+    <form class="full-size">
+      <div class="row row-bottom">
+        <div class="col col-top text-center">
+          <h2>ขอขอบคุณ</h2>
+        </div>
+      </div>
+
+      <div class="text-discription">
+        <!--<small>สินเชื่อบุคคลแบบไม่มีหลักประกัน วัตถุประสงค์ในการกู้ เพื่อการอุปโภค บริโภค เพื่อชำระหนี้ที่มีกับสถาบันการเงินอื่น คุณสมบัติผู้กู้ เป็นพนักงานประจำของบริษัทหรือหน่วยงานเอกชน มีเงินได้ประจำขั้นต่ำ</small>-->
+        <small>ขอขอบคุณ ที่ท่านให้ความสนใจสมัครสินเชื่อ เจ ฟินเทค ทางเราจะทำการติดต่อกลับท่านอีกครั้ง</small>
+      </div>
+      <!--<div class="row row-bottom">
+        <div class="col col-bottom">
+          <p>..............</p>
+        </div>
+      </div>-->
+      <div class="row row-bottom">
+        <div class="col col-bottom">
+          <button class="button button-block button-positive" type="button" ng-click="edit()">แก้ไขข้อมูล</button>
+        </div>
+      </div>
+      <!--<div class="row row-bottom">-->
+        <!--<div class="col col-bottom">-->
+          <!--<button class="button button-block button-assertive" type="button" id="button-step-6" ng-click="export()">ดูไฟล์ PDF</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    </form>
+  </ion-content>
+</ion-view>

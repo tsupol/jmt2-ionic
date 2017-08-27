@@ -1,0 +1,338 @@
+<ion-view ng-controller="LoanDetailController">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech
+        <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{
+          $root.environment }}
+        </small>
+      </h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content>
+    <div class="container flex-start">
+      <div class="row row-no-padding">
+        <div class="col container flex-start">
+          <div class="row">
+            <div class="col">
+              <h4 class="roboto strong">{{ parseLoanName(item.name) || '-' }}</h4>
+            </div>
+          </div>
+          <!--<div class="row">-->
+          <!--<div class="col">-->
+          <!--<h6 class="">ประเภท: {{ parseLoanType(item.type) }}</h6>-->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="row" ng-switch="item.type">
+            <div class="col" ng-switch-when="revolving loan">
+              <div class="block">
+                <h6 class="">ประเภท: {{ parseLoanType(item.type) }}</h6>
+              </div>
+              <div class="block">
+                <div class="h6">ข้อมูล ณ วันที่: {{ item.updated_at || item.imported_at }}</div>
+              </div>
+              <div class="block" ng-show="item.outstanding_balance_rl !== 0">
+                <h6 class="text-nowrap">ยอดค้างชำระทั้งหมด: {{ (item.outstanding_balance_rl | number:2) || '-' }} บาท</h6>
+              </div>
+              <div class="block" ng-show="item.loan_amount_rl !== 0">
+                <h6 class="nowrap">ยอดเงินต้นคงค้าง: {{ (item.loan_amount_rl | number:0) || '-' }} บาท</h6>
+              </div>
+              <!--<div class="block" ng-show="item.loan_amount !== 0">-->
+              <!--<h6 class="text-nowrap">ยอดที่กู้มา: {{ (item.loan_amount | number:2) || '-' }} บาท</h6>-->
+              <!--</div>-->
+            </div>
+            <div class="col" ng-switch-when="Mobile">
+              <div class="block">
+                <h6 class="">ประเภท: {{ parseLoanType(item.type) }}</h6>
+              </div>
+              <div class="block">
+                <div class="h6">ข้อมูล ณ วันที่: {{ item.updated_at || item.imported_at }}</div>
+              </div>
+              <!--<div class="block" ng-show="item.total_amount !== 0">-->
+              <!--<h6 class="text-nowrap">ยอดค้างชำระทั้งหมด: {{ (item.total_amount | number:2) || '-' }} บาท</h6>-->
+              <!--</div>-->
+              <div class="block" ng-show="item.outstanding_balance_ml !== 0">
+                <h6 class="text-nowrap">ยอดค้างชำระทั้งหมด: {{ (item.outstanding_balance_ml | number:2) || '-' }}
+                  บาท</h6>
+              </div>
+              <!--<div class="block" ng-show="item.base_amount !== 0">-->
+              <!--<h6 class="nowrap">ราคาสินค้า: {{ (item.base_amount | number:0) || '-' }} บาท</h6>-->
+              <!--</div>-->
+              <!--<div class="block">-->
+              <!--<h6 class="nowrap">เงินดาวน์: {{ (item.down_amount | number:0) || '-' }} บาท</h6>-->
+              <!--</div>-->
+              <div class="block" ng-show="item.loan_amount_ml !== 0">
+                <h6 class="nowrap">จำนวนเงินกู้: {{ (item.loan_amount_ml | number:0) || '-' }} บาท</h6>
+              </div>
+              <div class="block">
+                <h6 class="nowrap">จำนวนงวด: {{ item.total_cycle_ml }} งวด</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-40 container flex-start">
+          <div class="row">
+            <div class="col text-right col-bottom">
+              <h2 class="no-margin inline roboto assertive">{{ (item.due_amount | number:2) || '-' }}</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-right">
+              <!--<h6 class="no-margin">ยอดชำระตามใบแจ้งยอดล่าสุด</h6>-->
+              <h6 class="no-margin">ค่างวด</h6>
+            </div>
+          </div>
+          <!--<div class="row text-right">-->
+          <!--<div class="col text-right">-->
+          <!--Due on {{ item.due_date | amDateFormat:'DD/MM/YYYY' }}-->
+          <!--</div>-->
+          <!--</div>-->
+        </div>
+      </div>
+      <!--<div class="row">-->
+      <!--<div class="col">-->
+      <!--<div class="block">-->
+      <!--<h6 class="nowrap">อัตราดอกเบี้ยและค่าธรรมเนียม: {{ (item.interest_rate | number:2) || '-' }}</h6>-->
+      <!--</div>-->
+      <!--<div class="block">-->
+      <!--<h6 class="nowrap">ดอกเบี้ย และค่าธรรมเนียมรวมทั้งสิ้น: {{ (item.interest_amount | number:2) || '-' }}</h6>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <div class="row row-no-padding">
+        <div class="col">
+          <hr style="height: 2px; border-top: 2px solid #BCBCBC; margin: 5px 0;"/>
+        </div>
+      </div>
+
+      <div class="row row-no-padding">
+        <div class="col">
+          <div class="row">
+            <div class="col col-50" ngclipboard data-clipboard-text="{{ item.bill_ref1 }}">
+              <div class="row col col-center text-center">
+                Ref 1
+              </div>
+              <div class="row col col-center text-center height-50 container flex-center align-center">
+                <h1 class="no-margin roboto" style="word-break: break-all;" ng-style="calculateRefSize(item.bill_ref1)">
+                  {{ item.bill_ref1 }}</h1>
+              </div>
+            </div>
+            <div class="col col-50" ngclipboard data-clipboard-text="{{ item.bill_ref2 }}">
+              <div class="row col col-center text-center">
+                Ref 2
+              </div>
+              <div class="row col col-center text-center height-50 container flex-center align-center">
+                <h1 class="no-margin roboto" ng-style="calculateRefSize(item.bill_ref2)">{{ item.bill_ref2 }}</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-center no-padding-margin">
+            <div class="col" style="height: 160px;">
+              <ion-slide-box does-continue="false" auto-play="false" slide-interval="5000"
+                             on-slide-changed="slideHasChanged($index)">
+                <ion-slide>
+                  <div class="margin-horizontal-auto text-center" style="height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;">
+                    <div class="item item-text-wrap no-border no-padding-margin item-barcode">
+                      <!--<div class="text-center" style="-->
+                      <!--position: absolute;-->
+                      <!--top: 50%;-->
+                      <!--left: 50%;-->
+                      <!--transform: translate(-50%, -50%);-->
+                      <!--">-->
+                      <!--<button class="button button-small button-outline button-stable button-zoom" ng-click="openSlideImageModal(currentSlideIndex)" style="background-color: #ffffff;">-->
+                      <!--<h3 class="inline no-margin padding-right"><i class="ion-ios-search-strong"></i></h3>-->
+                      <!--กดเพื่อขยายภาพ-->
+                      <!--</button>-->
+                      <!--</div>-->
+                      <td-barcode
+                        config="{ name : 'Code 128', type : 'code128', text : '|' + item.bill_barcode, altText : item.bill_barcode, scale : { x : 1, y : 1 }, options : 'includetext'}">
+                      </td-barcode>
+
+                    </div>
+                  </div>
+                </ion-slide>
+                <ion-slide>
+                  <div class="margin-horizontal-auto text-center">
+                    <qrcode version="5" error-correction-level="Q" size="120"
+                            data="{{ '|' + item.bill_barcode }}"></qrcode>
+                  </div>
+                </ion-slide>
+              </ion-slide-box>
+            </div>
+          </div>
+
+          <div class="row row-center">
+            <div class="col col-center text-center col-flex-center">
+              <button class="button button-small button-outline button-stable col-flex-center button-zoom"
+                      ng-click="openSlideImageModal(currentSlideIndex)">
+                <h3 class="inline no-margin padding-right"><i class="ion-ios-search-strong"></i></h3>
+                กดเพื่อขยายภาพ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script id="modal-view-image.html" type="text/ng-template">
+        <ion-modal-view>
+          <ion-header-bar class="bar-assertive" align-title="center">
+            <h1 class="title">JFintech</h1>
+            <div class="buttons">
+              <button class="button" ng-click="closeSlideImageModal()">Close</button>
+            </div>
+          </ion-header-bar>
+          <ion-content class="center-vertical" scroll="false">
+            <div class="container flex-center align-center">
+              <div ng-switch="modalType">
+                <!--<div ng-switch-when="barcode" style="transform: rotate(90deg)">-->
+                <div ng-switch-when="barcode">
+                  <td-barcode
+                    config="{ name : 'Code 128', type : 'code128', text : '|' + item.bill_barcode, altText : item.bill_barcode, scale : { x : 1, y : 1 }, options : 'includetext', rotation: 'R'}"></td-barcode>
+                </div>
+                <div ng-switch-default="">
+                  <qrcode version="5" error-correction-level="Q" size="300"
+                          data="{{ '|' + item.bill_barcode }}"></qrcode>
+                </div>
+              </div>
+            </div>
+          </ion-content>
+        </ion-modal-view>
+      </script>
+
+      <!--<div class="row">-->
+      <!--<div class="col col-center">-->
+      <!--<div ng-switch="item.status">-->
+      <!--<div ng-switch-when="revolving">-->
+      <!--<button type="button" class="button button-block button-positive" ui-sref="app.loan.detail.payment_create({loanId: item.id})">Make a payment now</button>-->
+      <!--</div>-->
+      <!--<div ng-switch-when="pending">-->
+      <!--<div>Pending</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <div class="row">
+        <div class="col">
+          <div class="list">
+            <!--<div class="item">-->
+            <!--<h3>ตารางการผ่อนชำระ</h3>-->
+            <!--</div>-->
+
+            <div class="item" ng-if="item.type == 'Mobile'">
+              <!--<div class="text-center padding-bottom">-->
+              <!--<div class="w3-progress-container" style="height: 1em; background-color: #CECECE; border-radius: 0.5em;">-->
+              <!--<div class="w3-progressbar" style="background: linear-gradient(to right, #ff6a4e 0%, #ffb14e 100%); border-radius: 0.5em;" ng-style="{'width': (item.paid_amount/item.loan_amount*100) + '%'}"></div>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--<div class="text-center">-->
+              <!--<h4>{{ item.paid_amount | number:0 }} ของทั้งหมด {{ item.loan_amount | number:0 }} บาท</h4>-->
+              <!--</div>-->
+              <!--<div class="text-center" ng-switch-when="revolving loan">-->
+                <!--<div class="w3-progress-container" style="height: 1em; background-color: #CECECE; border-radius: 0.5em;">-->
+                <!--<div class="w3-progressbar"-->
+                <!--style="background: linear-gradient(to right, #ff6a4e 0%, #ffb14e 100%); border-radius: 0.5em;"-->
+                <!--ng-style="{'width': (item.paid_amount/item.loan_amount_rl*100) + '%'}"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <div class="text-center">
+                <div class="w3-progress-container"
+                     style="height: 1em; background-color: #CECECE; border-radius: 0.5em;">
+                  <div class="w3-progressbar"
+                       style="background: linear-gradient(to right, #ff6a4e 0%, #ffb14e 100%); border-radius: 0.5em;"
+                       ng-style="{'width': ((item.total_cycle-item.remaining_cycle)/item.total_cycle*100) + '%'}"></div>
+                </div>
+                <!--<h4>ชำระแล้ว {{ item.total_cycle-item.remaining_cycle }} ของทั้งหมด {{ item.total_cycle }} งวด</h4>-->
+                <h4 style="margin-top: 1vh">ชำระแล้ว {{ item.total_cycle-item.remaining_cycle }} ของทั้งหมด {{ item.total_cycle }} งวด</h4>
+              </div>
+              <div class="text-center">
+                <!--<a class="assertive no-underline" ui-sref="app.loan.detail.payment_list({loanId: loanId})">ดูรายละเอียด &raquo;</a>-->
+              </div>
+            </div>
+
+            <div class="item">
+              งวดที่ชำระแล้ว <small style="font-size: 1vh">(แสดงรายการชำระย้อนหลัง 90 วัน)</small>
+            </div>
+
+            <div class="item text-center" ng-if="item.payment_list.length==0">
+              <div><h4 class="italic">ไม่มีประวัติการชำระเงินภายในรอบเดือนนี้</h4></div>
+            </div>
+            <div class="item no-padding" ng-repeat="payment in item.payment_list">
+              <!--<div class="item no-padding" ng-repeat="payment in item.payment_list" ng-click="openPaymentDetail(payment.id)">-->
+              <div class="row">
+                <div class="col col-67 col-center">
+                  <div class="row">
+                    <!--<span>{{ payment.payment_date | amDateFormat:'DD/MM/YYYY' }}</span>-->
+                    <span>{{ payment.payment_date || '-' }}</span>
+                  </div>
+                  <div class="row">
+                    <span class="padding-right">จำนวนเงินที่ชำระ :</span>
+                    <span>{{ payment.amount | number:2 }}</span>
+                    <span class="padding-left">บาท</span>
+                  </div>
+                </div>
+                <div class="col col-center">
+                  <!--<div class="row row-center row-no-padding">-->
+                  <!--<div class="col col-center text-right">เงินคงเหลือ</div>-->
+                  <!--</div>-->
+                  <!--<div class="row row-center row-no-padding">-->
+                  <!--<div class="col col-center text-right">-->
+                  <!--&lt;!&ndash;<span>{{ item.remaining_amount | number:2 }}</span>&ndash;&gt;-->
+                  <!--<span>{{ payment.remaining_amount | number:2 }}</span>-->
+                  <!--<span>บาท</span>-->
+                  <!--</div>-->
+                  <!--</div>-->
+                </div>
+                <!--<div class="col col-center item-center text-center">-->
+                <!--<div ng-switch="payment.status">-->
+                <!--<div ng-switch-when="paid">-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<h2><i class="ion-checkmark-circled balanced"></i></h2>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<span class="balanced uppercase">Paid</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div ng-switch-when="error">-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<h2><i class="ion-close-circled assertive"></i></h2>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<span class="assertive uppercase">Declined</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div ng-switch-default>-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<h2><i class="ion-help-circled energized"></i></h2>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row row-no-padding">-->
+                <!--<div class="col col-center text-center">-->
+                <!--<span class="energized uppercase">Pending</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

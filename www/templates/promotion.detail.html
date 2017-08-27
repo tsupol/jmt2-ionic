@@ -1,0 +1,23 @@
+<ion-view>
+
+  <ion-content ng-controller="PromotionDetailController">
+    <div class="container promotion-container">
+      <div class="row row-center">
+        <div class="col col-center text-center">
+          <h3 ng-bind="item.title"></h3>
+        </div>
+      </div>
+      <div class="row row-center item-center">
+        <div class="col col-90 col-center text-center">
+          <img class="promotion-main-image" ng-src="{{ item.image_url }}" err-src="img/image_not_available.png" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!--<div class="text-justify padding-horizontal promotion-description" ng-bind-html="item.type_description | trusted_html"></div>-->
+          <div class="padding-horizontal promotion-description" ng-bind-html="item.type_description | trusted_html"></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

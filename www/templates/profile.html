@@ -1,0 +1,54 @@
+<ion-view>
+  <ion-content ng-controller="ProfileController">
+    <div class="list">
+
+      <div class="item item-divider">
+        <strong>General</strong>
+      </div>
+      <div class="item">
+          <span>Name</span>
+          <span class="item-note">{{ profile.user.name }}</span>
+      </div>
+      <div class="item">
+        <span>User ID</span>
+        <span class="item-note">{{ profile.user.id }}</span>
+      </div>
+      <div class="item">
+        <span>Phone Number</span>
+        <span class="item-note">{{ profile.phone }}</span>
+      </div>
+      <div class="item">
+        <span>Date of Birth</span>
+        <span class="item-note">{{ profile.birthdate | amDateFormat:'DD MMMM YYYY' }}</span>
+      </div>
+
+      <div class="item item-divider">
+        <strong>Address</strong>
+      </div>
+      <div class="item">
+        <span>Email</span>
+        <span class="item-note">{{ profile.email }}</span>
+      </div>
+      <div class="item">
+        <span>Addresses</span>
+        <span class="item-note">{{ getProfileAddress(profile) | truncate:25 }}</span>
+      </div>
+      <div class="item item-button-right">
+        <span>&nbsp;</span>
+        <button class="button button-outline button-positive" ui-sref="app.profile_edit">
+          Edit
+        </button>
+      </div>
+
+      <div class="item item-divider">
+        <strong>Security</strong>
+      </div>
+      <div class="item item-button-right">
+        <span>Password</span>
+        <button class="button button-outline button-positive" ui-sref="app.change_password">
+          Edit
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

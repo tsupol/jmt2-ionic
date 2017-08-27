@@ -1,0 +1,32 @@
+<div class="promotion-carousel" ng-controller="PromotionCarouselController">
+  <!--<ion-slide-box does-continue="true" auto-play="true" slide-interval="5000" on-slide-changed="slideHasChanged($index)">-->
+    <!--<ion-slide ng-repeat="promotion in promotionList">-->
+      <!--<div class="row row-no-padding row-center item-center" ng-click="openPromotionDetail(promotion.id)">-->
+        <!--<div class="col col-center text-center promotion-image-container">-->
+          <!--<div class="promotion-title">-->
+            <!--<span>{{ promotion.title }}</span>-->
+          <!--</div>-->
+          <!--<div class="promotion-image" >-->
+            <!--<img ng-src="{{ promotion.image_url || 'img/image_not_available.png' }}" err-src="img/no_image.png" />-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</ion-slide>-->
+  <!--</ion-slide-box>-->
+
+  <ion-slides  options="options" slider="data.slider">
+    <ion-slide-page ng-repeat="promotion in promotionList">
+      <div class="row row-no-padding row-center item-center" ng-click="openPromotionDetail(promotion.id)">
+        <div class="col col-center text-center promotion-image-container">
+          <div class="promotion-title">
+            <span>{{ promotion.title }}</span>
+          </div>
+          <div class="promotion-image">
+            <!--<img ng-src="{{ promotion.image_url || 'img/image_not_available.png' }}" err-src="img/no_image.png"/>-->
+            <img ng-src="{{ 'https://jmt-loan-admin.jfintech.co.th/image/' + promotion.id || 'img/image_not_available.png' }}" err-src="img/no_image.png"/>
+          </div>
+        </div>
+      </div>
+    </ion-slide-page>
+  </ion-slides>
+</div>

@@ -1,0 +1,173 @@
+<ion-view hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container" scroll="true" ng-controller="ApplicationCreateStep1Controller">
+    <br>
+    <!--<h4 class="text-center"><b>Step 1 : ข้อมูลผู้ขอสินเชื่อ</b></h4>-->
+    <h4 class="text-center"><b>กรุณากรอกข้อมูลด้านล่างให้ครบถ้วน</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+
+    <div class="list">
+      <form class="full-size" name="formS1" ng-submit="next()" novalidate>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">วันทีสมัคร </span>
+          <input type="text" value="{{today | amDateFormat:'DD MMMM YYYY' }}" readonly>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : (formS1.id_card_no.$invalid) }">
+          <span class="input-label">
+            National ID  <i class="ion-asterisk active w3-text-red"></i>
+          </span>
+          <div class="row input-row">
+            <input type="hidden" name="id_card_no" ng-model="application.id_card_no" ng-pattern="/^[0-9]{13}$/" required />
+            <input type="tel" pattern="\d*" class="col" name="idens1" ng-model="application.id_card_no_array[0]" maxlength="1" ng-maxlength="1" tabindex="1" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2" ng-model="application.id_card_no_array[1]" maxlength="1" ng-maxlength="1" tabindex="2" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens3" ng-model="application.id_card_no_array[2]" maxlength="1" ng-maxlength="1" tabindex="3" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens4" ng-model="application.id_card_no_array[3]" maxlength="1" ng-maxlength="1" tabindex="4" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens5" ng-model="application.id_card_no_array[4]" maxlength="1" ng-maxlength="1" tabindex="5" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens6" ng-model="application.id_card_no_array[5]" maxlength="1" ng-maxlength="1" tabindex="6" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens7" ng-model="application.id_card_no_array[6]" maxlength="1" ng-maxlength="1" tabindex="7" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens8" ng-model="application.id_card_no_array[7]" maxlength="1" ng-maxlength="1" tabindex="8" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens9" ng-model="application.id_card_no_array[8]" maxlength="1" ng-maxlength="1" tabindex="9" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens10" ng-model="application.id_card_no_array[9]" maxlength="1" ng-maxlength="1" tabindex="10" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens11" ng-model="application.id_card_no_array[10]" maxlength="1" ng-maxlength="1" tabindex="11" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens12" ng-model="application.id_card_no_array[11]" maxlength="1" ng-maxlength="1" tabindex="12" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens13" ng-model="application.id_card_no_array[12]" maxlength="1" ng-maxlength="1" tabindex="13" numbers-only auto-next required>
+          </div>
+
+          <div class="help-block" ng-if="(formS1.id_card_no.$invalid)">
+            <p ng-if="(formS1.id_card_no.$error.required || formS1.id_card_no.$error.pattern)">* โปรดกรอกตัวเลข 13 หลัก</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : (formS1.id_card_no2.$invalid) }">
+          <span class="input-label">
+            ยืนยัน National ID  <i class="ion-asterisk active w3-text-red"></i>
+          </span>
+          <div class="row input-row">
+            <input type="hidden" name="id_card_no2" ng-model="application.id_card_no2" ng-pattern="/^[0-9]{13}$/" required match="application.id_card_no" />
+            <input type="tel" pattern="\d*" class="col" name="idens2_1" ng-model="application.id_card_no_array2[0]" maxlength="1" ng-maxlength="1" tabindex="101" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_2" ng-model="application.id_card_no_array2[1]" maxlength="1" ng-maxlength="1" tabindex="102" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_3" ng-model="application.id_card_no_array2[2]" maxlength="1" ng-maxlength="1" tabindex="103" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_4" ng-model="application.id_card_no_array2[3]" maxlength="1" ng-maxlength="1" tabindex="104" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_5" ng-model="application.id_card_no_array2[4]" maxlength="1" ng-maxlength="1" tabindex="105" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_6" ng-model="application.id_card_no_array2[5]" maxlength="1" ng-maxlength="1" tabindex="106" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_7" ng-model="application.id_card_no_array2[6]" maxlength="1" ng-maxlength="1" tabindex="107" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_8" ng-model="application.id_card_no_array2[7]" maxlength="1" ng-maxlength="1" tabindex="108" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_9" ng-model="application.id_card_no_array2[8]" maxlength="1" ng-maxlength="1" tabindex="109" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_10" ng-model="application.id_card_no_array2[9]" maxlength="1" ng-maxlength="1" tabindex="110" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_11" ng-model="application.id_card_no_array2[10]" maxlength="1" ng-maxlength="1" tabindex="111" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_12" ng-model="application.id_card_no_array2[11]" maxlength="1" ng-maxlength="1" tabindex="112" numbers-only auto-next required>
+            <input type="tel" pattern="\d*" class="col" name="idens2_13" ng-model="application.id_card_no_array2[12]" maxlength="1" ng-maxlength="1" tabindex="113" numbers-only auto-next required>
+          </div>
+
+          <div class="help-block" ng-if="(formS1.id_card_no2.$invalid)">
+            <p ng-if="(formS1.id_card_no2.$error.required || formS1.id_card_no2.$error.pattern)">* โปรดกรอกตัวเลข 13 หลัก</p>
+            <p ng-if="formS1.id_card_no2.$error.match && !(formS1.id_card_no2.$error.required || formS1.id_card_no2.$error.pattern)">* รหัสบัตรประชาชนและรหัสยืนยันบัตรประชาชนไม่ตรงกัน</p>
+          </div>
+          <!--<div ng-messages="formS1.id_card_no2.$error" class="help-block">-->
+            <!--<p ng-message="required">* โปรดกรอกตัวเลข 13 หลัก</p>-->
+            <!--<p ng-message="pattern">* โปรดกรอกตัวเลข 13 หลัก</p>-->
+            <!--<p ng-message="match">* รหัสบัตรประชาชนและรหัสยืนยันบัตรประชาชนไม่ตรงกัน</p>-->
+          <!--</div>-->
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS1.name_th.$invalid && !formS1.name_th.$pristine}">
+          <span class="input-label ">ชื่อ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="name_th" ng-model="application.name_th" placeholder="" ng-pattern ="/^[ก-๙\s]*$/" required>
+          <div class="help-block" ng-show="formS1.name_th.$invalid && !formS1.name_th.$pristine">
+            <p ng-show="formS1.name_th.$error.required">* โปรดกรอกชื่อ </p>
+            <p ng-show="formS1.name_th.$error.pattern">* กรุณากรอกชื่อเป็นภาษาไทย </p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS1.surname_th.$invalid && !formS1.surname_th.$pristine}">
+          <span class="input-label ">นามสกุล <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="surname_th" ng-model="application.surname_th" placeholder="" ng-pattern ="/^[ก-๙\s]*$/" required>
+          <div class="help-block" ng-show="formS1.surname_th.$invalid && !formS1.surname_th.$pristine">
+            <p ng-show="formS1.surname_th.$error.required">* โปรดกรอกนามสกุล</p>
+            <p ng-show="formS1.name_th.$error.pattern">* กรุณากรอกนามสกุลเป็นภาษาไทย </p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS1.birth_date.$invalid && !formS1.birth_date.$pristine || timeDiff > 55}">
+          <span class="input-label ">วัน เดือน ปีเกิด (พ.ศ.) <i class="ion-asterisk active w3-text-red"></i></span>
+          <div class="row input-row">
+            <input type="hidden" name="birth_date" ng-model="application.birth_date" ng-pattern="/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/" required />
+            <select name="bday_date" ng-model="application.bday_date" class="col" ng-options="select.id as select.value for select in date_selects" ng-change="diffTime()" required>
+              <!--<option value="">=====</option>-->
+            </select>
+            <select name="bday_month" ng-model="application.bday_month" class="col" ng-options="select.id as select.value for select in month_selects" ng-change="diffTime()" required>
+              <!--<option value="">=====</option>-->
+            </select>
+            <select name="bday_year" ng-model="application.bday_year" class="col" ng-options="select.id as select.value for select in year_select_for_birth_date" ng-change="diffTime()" required>
+              <!--<option value="">=====</option>-->
+            </select>
+          </div>
+          <div class="help-block" ng-show="
+              (formS1.bday_date.$invalid && !formS1.bday_date.$pristine) ||
+              (formS1.bday_month.$invalid && !formS1.bday_month.$pristine) ||
+              (formS1.bday_year.$invalid && !formS1.bday_year.$pristine) ||
+              timeDiff > 55
+            ">
+            <p ng-show="
+                formS1.bday_date.$error.required ||
+                formS1.bday_month.$error.required ||
+                formS1.bday_year.$error.required
+            ">* โปรดเลือกวัน เดือน ปีเกิด</p>
+            <p ng-show="
+                timeDiff > 55
+            ">* อายุไม่เข้าเงื่อนไข</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : formS1.card_expired_date.$invalid }">
+          <span class="input-label ">วันหมดอายุบัตรประชาชน<i class="ion-asterisk active w3-text-red"></i></span>
+          <div class="row input-row">
+            <input type="hidden" name="card_expired_date" ng-model="application.card_expired_date"
+                   date-greater-than="currentDateTimeString" ng-pattern="/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/" required />
+            <select name="expire_idin_date" ng-model="application.expire_idin_date" class="col" ng-options="select.id as select.value for select in date_selects" required>
+              <!--<option value="">=====</option>-->
+            </select>
+            <select name="expire_idin_month" ng-model="application.expire_idin_month" class="col" ng-options="select.id as select.value for select in month_selects" required>
+              <!--<option value="">=====</option>-->
+            </select>
+            <select name="expire_idin_year" ng-model="application.expire_idin_year" class="col" ng-options="select.id as select.value for select in year_select_for_expired_date" required>
+              <!--<option value="">=====</option>-->
+            </select>
+          </div>
+          <div class="help-block" ng-if="formS1.card_expired_date.$invalid">
+            <p ng-if="formS1.card_expired_date.$error.required">* โปรดกรอกวันหมดอายุบัตรประชาชน</p>
+            <p ng-if="formS1.card_expired_date.$error.dateGreaterThan">* ไม่สามารถใช้บัตรประชาชนที่หมดอายุแล้ว</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : formS1.mobile_1.$invalid && !formS1.mobile_1.$pristine}">
+          <span class="input-label ">หมายเลขโทรศัพท์มือถือ <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="tel" name="mobile_1" pattern="0[0-9]{9}" ng-model="application.mobile_1" placeholder="" required>
+          <div class="help-block" ng-show="formS1.mobile_1.$invalid && !formS1.mobile_1.$pristine">
+            <p ng-show="formS1.mobile_1.$error.required">* กรอกหมายเลขโทรศัพท์มือถือ </p>
+            <p ng-show="formS1.mobile_1.$error.pattern">* หมายเลขโทรศัพท์มือถือไม่ถูกต้อง </p>
+          </div>
+        </label>
+
+
+        <!--<pre>{{ formS1 }}</pre>-->
+        <div class="row row-bottom">
+          <div class="col col-bottom">
+            <button class="button button-block button-assertive" type="submit" id="button-step-1" ng-disabled="formS1.$dirty && formS1.$invalid || (timeDiff > 55)">บันทึก</button>
+            <!--<button class="button button-block button-assertive" type="submit" >ต่อไป</button>-->
+          </div>
+        </div>
+      </form>
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>

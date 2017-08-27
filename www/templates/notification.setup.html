@@ -1,0 +1,20 @@
+<ion-view view-title="Edit Notification">
+  <ion-content ng-controller="NotificationController">
+    <div class="list">
+
+      <div class="item item-divider text-center">
+        <strong>การแจ้งเตือน</strong>
+      </div>
+
+      <div class="item item-toggle">
+        การแจ้งเตือน
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="show_notification" ng-true-value="true" ng-false-value="false">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

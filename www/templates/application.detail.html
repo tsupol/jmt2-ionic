@@ -1,0 +1,61 @@
+<ion-view>
+  <ion-content scroll="false" ng-controller="ApplicationDetailController">
+    <div class="container application-container justify-start">
+      <div class="row stable-bg">
+        <div class="row row-center">
+          <div class="col">
+            <h4 class="block strong">{{ profile.name }}</h4>
+            <h4 class="block strong">Applied: {{ item.applied_date | amDateFormat:'DD MMMM YYYY' }}</h4>
+          </div>
+          <div class="col col-25 col-center text-right">
+            <button type="button" class="button button-outline button-light">
+              <h1 class="no-padding-margin"><i ng-class="getStatusIcon(item.status)"></i></h1>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-center item-center">
+        <div class="col col-center text-center">
+          <h2 class="strong padding">{{ item.name }}</h2>
+        </div>
+      </div>
+
+      <div class="row row-center item-center">
+        <div class="col col-center text-center">
+          <div class="no-padding-margin big-icon"><i ng-class="getStatusIcon(item.status)"></i></div>
+        </div>
+      </div>
+
+      <div class="row row-center item-center">
+        <div class="col col-center text-center" ng-switch="item.status">
+          <div ng-switch-default>
+            <h3 class="strong">N/A</h3>
+          </div>
+          <div ng-switch-when="waiting">
+            <h3 class="strong">Your pre-application is waiting for reviews.</h3>
+          </div>
+          <div ng-switch-when="reviewing">
+            <h3 class="strong">Your pre-application is still in review.</h3>
+          </div>
+          <div ng-switch-when="on_hold">
+            <h3 class="strong">Your pre-application is on-hold.</h3>
+          </div>
+          <div ng-switch-when="approved">
+            <h3 class="strong">Your pre-application is approved.</h3>
+          </div>
+          <div ng-switch-when="rejected">
+            <h3 class="strong">Your pre-application is rejected.</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-center item-center" ng-if="item.status === 'rejected'">
+        <div class="col col-center text-center">
+          <button class="button button-block button-positive" ui-sref="app.application.create">Apply New Loan</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,49 @@
+<ion-view hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content ng-controller="SettingsController" class='setting-container'>
+    <div class="list">
+
+      <!--<div class="item item-divider" ng-repeat-start="(groupName, groupArray) in settingsList">-->
+        <!--<strong>{{ groupName }}</strong>-->
+      <!--</div>-->
+
+      <!--<div class="item item-toggle" ng-repeat="item in groupArray">-->
+        <!--{{ item.title }}-->
+        <!--<p class="description" ng-if="item.description">{{ item.description }}</p>-->
+        <!--<label class="toggle" ng-class="getToggleClass(item)">-->
+          <!--<input type="checkbox" ng-model="item.value" ng-true-value="true" ng-false-value="false">-->
+          <!--<div class="track">-->
+            <!--<div class="handle"></div>-->
+          <!--</div>-->
+        <!--</label>-->
+      <!--</div>-->
+
+      <!--<div ng-repeat-end=""></div>-->
+
+      <div class="item item-divider text-center">
+        <h3>ตั้งค่า</h3>
+      </div>
+
+      <div class="item padding-top-5 padding-bottom-5">
+        <a class="button button-block button-dark button-outline" ui-sref="app.profile_edit">ข้อมูลผู้ใช้</a>
+      </div>
+
+      <div class="item padding-top-5 padding-bottom-5">
+        <a class="button button-block button-dark button-outline" ui-sref="app.settings_notification">การแจ้งเตือน</a>
+      </div>
+
+      <div class="item padding-top-5 padding-bottom-5">
+        <a class="button button-block button-dark button-outline" href="" ng-click="logout($event)">ออกจากระบบ</a>
+      </div>
+
+      <div class="text-right item padding-top-5 padding-bottom-5">
+        <p>Version: {{appVersion}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

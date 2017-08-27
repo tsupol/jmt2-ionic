@@ -1,0 +1,80 @@
+<ion-view view-title="Post Loans" ng-controller="LoanPaymentListController">
+  <ion-nav-title>
+    <div class="app-title">
+      <h4>JFintech <small class="badge" ng-class="getEnvironmentBadgeClass()" ng-if="$root.environment != 'production'">{{ $root.environment }}</small></h4>
+    </div>
+  </ion-nav-title>
+
+  <ion-content scroll="true">
+    <div class="list">
+      <div class="item item-divider text-center">
+        ตารางการผ่อนชำระสินค้า
+      </div>
+      <div class="item text-center" ng-if="paymentList.length==0">
+        <div>
+          <h4 class="italic">ไม่มีประวัติการชำระเงินภายในรอบเดือนนี้ สำหรับสัญญานี้</h4>
+        </div>
+      </div>
+      <div class="item no-padding" ng-repeat="item in paymentList | orderBy:'-id'"
+           ng-class-odd="odd" ng-class-even="even">
+           <!--ng-click="openPaymentDetail(item.id)">-->
+        <!--<div class="row">-->
+        <!--<div class="col col-75 truncate">-->
+        <!--<h3><strong>{{ item.name }}</strong></h3>-->
+        <!--</div>-->
+        <!--<div class="col col-bottom text-right">-->
+        <!--<small>remaining</small>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+        <!--<div class="col col-bottom col-40">-->
+        <!--<strong>{{ item.remaining_cycle }}</strong> payments left-->
+        <!--</div>-->
+        <!--<div class="col col-bottom text-right">-->
+        <!--<span>{{ item.due_amount | number:0 }}</span> / <strong>{{ item.remaining_amount | number:0 }}</strong> THB-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+          <div class="col col-66 col-center">
+            <div class="row">
+              <span class="h5 padding-right">งวดที่ {{ $index+1 }} จาก {{ loan.total_cycle || paymentList.length }}</span>
+              <!--<span class="h5 padding-right">งวดที่ {{ $index+1 }} จาก {{ loan.remaining_cycle || paymentList.length }}</span>-->
+            </div>
+            <div class="row">
+              <span class="h5 padding-right">วันครบกำหนดชำระ :</span>
+              <span>{{ item.payment_date | amDateFormat:'DD/MM/YYYY' }}</span>
+            </div>
+            <div class="row">
+              <span class="h5 padding-right">ดอกเบี้ย :</span>
+              <span class="h5">{{ item.interest | number:0 }}</span>
+              <span class="h5 padding-left">บาท</span>
+            </div>
+            <div class="row">
+              <span class="h5 padding-right">เงินคงเหลือ :</span>
+              <span class="h5">{{ item.remaining_amount | number:0 }}</span>
+              <span class="h5 padding-left">บาท</span>
+            </div>
+          </div>
+          <div class="col col-33 col-center">
+            <div class="row">
+              <div class="col text-right">
+                <span class="h3 amount roboto assertive">{{ (item.amount | number:2) || '-' }}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-right">
+                <span class="h5 dark">บาท</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-right">
+                <!--<span class="h6 inline padding-right">เงินคืน : </span>-->
+                <!--<span class="h6 inline gray">{{ item.paid_amount | number:2 }}</span>-->
+                <!--<span class="h6 inline gray padding-left">บาท</span>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

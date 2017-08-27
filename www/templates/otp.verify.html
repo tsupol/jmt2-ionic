@@ -1,0 +1,41 @@
+<ion-view view-title="Verify OTP">
+  <ion-content ng-controller="OtpVerifyController" scroll="true">
+    <form class="container center-vertical flex-around" name="mainForm" ng-submit="verifyOTP()" novalidate>
+      <div class="row">
+        <div class="col">
+          <div class="full-width text-center">
+            <h3>กรุณาใส่รหัส OTP</h3>
+            <p class="helper">
+              เพื่อป้องกันการแอบอ้างใช้งานข้อมูลของท่าน ระบบได้ดำเนินการจัดส่งรหัส OTP (One-Time Password)
+              สำหรับใช้ในการยืนยันตนไปยังหมายเลขโทรศัพท์มือถือที่ท่านได้ลงทะเบียนไว้แล้ว
+              SMS จะถูกดำเนินการจัดส่งภายใน 10-30 วินาที
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <input class="full-width" type="tel" name="otp_number" ng-model="otp_number" placeholder="" required
+                   maxlength="6" ng-pattern="/^\d+$/" ng-class="{'error' : mainForm.$submitted && (mainForm.otp_number.$invalid || mainForm.$invalid)}">
+            <p class="helper text-left">
+              กรุณากรอกรหัส OTP ที่ถูกจัดส่งไปให้ยังหมายเลขโทรศัพท์ที่ท่านได้ลงทะเบียนไว้ ภายเวลา 15 นาที
+            </p>
+          </div>
+          <div class="text-center height-60">
+            <h3 class="assertive" ng-if="mainForm.$submitted && mainForm.$invalid" ng-bind-html="error | trusted_html"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="row row-bottom">
+        <div class="col col-bottom">
+          <button class="button button-block button-positive" id="button-otp-verify" type="submit">ยืนยัน</button>
+          <button class="button button-block button-stable" type="button" ui-sref="otp.request">ขอรหัส OTP อีกครั้ง
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="fix-keyboard"></div>
+  </ion-content>
+</ion-view>

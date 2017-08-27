@@ -1,0 +1,43 @@
+<ion-view>
+  <ion-nav-title>
+    Create Payment Note
+  </ion-nav-title>
+
+  <ion-nav-buttons side="primary">
+    <button class="button button-icon button-dark button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content scroll="false" ng-controller="PaymentCreateController">
+    <form class="full-size flex-vertical" ng-submit="createPaymentNote()">
+      <div class="row">
+        <div class="col">
+          <div class="list">
+            <div class="input-label full-width"><strong>How did you pay?</strong></div>
+            <div class="full-width">
+              <ion-list>
+                <ion-radio ng-model="payment_type" ng-value="'MOBILE_APP'">Mobile Banking apps</ion-radio>
+                <ion-radio ng-model="payment_type" ng-value="'BANK_TRANSFER'">Direct Bank transfer</ion-radio>
+                <!--<ion-radio ng-model="payment_type" ng-value="'COUNTER_SERVICE'">Counter Service</ion-radio>-->
+              </ion-list>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="list">
+            <div class="input-label full-width"><strong>Note:</strong></div>
+            <textarea class="full-width stable-border padding" style="border: 1px solid #b2b2b2;" ng-model="note" rows="10" ng-maxlength="{{maxLength}}"></textarea>
+            <p>{{ (maxLength - note.length) >= 0 ? (maxLength - note.length) : 0 }} characters left</p>
+          </div>
+        </div>
+      </div>
+      <div class="row row-bottom">
+        <div class="col col-bottom">
+          <button class="button button-block button-positive" type="submit">Confirm Payment</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

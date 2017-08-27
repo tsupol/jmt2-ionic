@@ -1,0 +1,124 @@
+<ion-view ng-controller="ApplicationCreateStep5Controller" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="$root.goBack()" ng-if="showBackButton">
+      <i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="register-container" scroll="true">
+    <br>
+    <h4 class="text-center"><b>Step 5 : การรับสินเชื่อ</b></h4>
+    <div class="text-discription">
+      <small></small>
+    </div>
+
+    <div class="list">
+      <form class="full-size" name="formS5" ng-submit="next()" novalidate>
+        <label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : formS5.loan_receive_bank_name.$invalid && !formS5.loan_receive_bank_name.$pristine}">
+          <span class="input-label ">ธนาคาร<i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="loan_receive_bank_name" ng-model="application.loan_receive_bank_name" placeholder="" required>
+          <div class="help-block" ng-show="formS5.loan_receive_bank_name.$invalid && !formS5.loan_receive_bank_name.$pristine">
+            <p ng-show="formS5.loan_receive_bank_name.$error.required">* โปรดกรอกธนาคาร </p>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : formS5.loan_receive_bank_branch.$invalid && !formS5.loan_receive_bank_branch.$pristine}">
+          <span class="input-label ">สาขา<i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="loan_receive_bank_branch" ng-model="application.loan_receive_bank_branch" placeholder="" required>
+          <div class="help-block" ng-show="formS5.loan_receive_bank_branch.$invalid && !formS5.loan_receive_bank_branch.$pristine">
+            <p ng-show="formS5.loan_receive_bank_branch.$error.required">* โปรดกรอกสาขา </p>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : formS5.loan_receive_bank_account_name.$invalid && !formS5.loan_receive_bank_account_name.$pristine}">
+          <span class="input-label ">ชื่อบัญชี<i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="text" name="loan_receive_bank_account_name" ng-model="application.loan_receive_bank_account_name" placeholder="" required>
+          <div class="help-block" ng-show="formS5.loan_receive_bank_account_name.$invalid && !formS5.loan_receive_bank_account_name.$pristine">
+            <p ng-show="formS5.loan_receive_bank_account_name.$error.required">* โปรดกรอกชื่อบัญชี </p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' :
+            (formS5.loan_receive_bank_account_number1.$invalid && !formS5.loan_receive_bank_account_number1.$pristine) ||
+            (formS5.loan_receive_bank_account_number2.$invalid && !formS5.loan_receive_bank_account_number2.$pristine) ||
+            (formS5.loan_receive_bank_account_number3.$invalid && !formS5.loan_receive_bank_account_number3.$pristine) ||
+            (formS5.loan_receive_bank_account_number4.$invalid && !formS5.loan_receive_bank_account_number4.$pristine) ||
+            (formS5.loan_receive_bank_account_number5.$invalid && !formS5.loan_receive_bank_account_number5.$pristine) ||
+            (formS5.loan_receive_bank_account_number6.$invalid && !formS5.loan_receive_bank_account_number6.$pristine) ||
+            (formS5.loan_receive_bank_account_number7.$invalid && !formS5.loan_receive_bank_account_number7.$pristine) ||
+            (formS5.loan_receive_bank_account_number8.$invalid && !formS5.loan_receive_bank_account_number8.$pristine) ||
+            (formS5.loan_receive_bank_account_number9.$invalid && !formS5.loan_receive_bank_account_number9.$pristine)
+         }">
+          <span class="input-label ">เลขบัญชี <i class="ion-asterisk active w3-text-red"></i></span>
+          <div class="row input-row">
+            <input type="text" name="loan_receive_bank_account_number1" pattern="\d*" class="col" ng-model="application.bank_account_no_array[0]" maxlength="1" ng-maxlength="1" tabindex="1" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number2" pattern="\d*" class="col" ng-model="application.bank_account_no_array[1]" maxlength="1" ng-maxlength="1" tabindex="2" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number3" pattern="\d*" class="col" ng-model="application.bank_account_no_array[2]" maxlength="1" ng-maxlength="1" tabindex="3" auto-next required>
+            <span class="col">-</span>
+            <input type="text" name="loan_receive_bank_account_number4" pattern="\d*" class="col" ng-model="application.bank_account_no_array[3]" maxlength="1" ng-maxlength="1" tabindex="4" auto-next required>
+            <span class="col">-</span>
+            <input type="text" name="loan_receive_bank_account_number5" pattern="\d*" class="col" ng-model="application.bank_account_no_array[4]" maxlength="1" ng-maxlength="1" tabindex="5" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number6" pattern="\d*" class="col" ng-model="application.bank_account_no_array[5]" maxlength="1" ng-maxlength="1" tabindex="6" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number7" pattern="\d*" class="col" ng-model="application.bank_account_no_array[6]" maxlength="1" ng-maxlength="1" tabindex="7" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number8" pattern="\d*" class="col" ng-model="application.bank_account_no_array[7]" maxlength="1" ng-maxlength="1" tabindex="8" auto-next required>
+            <input type="text" name="loan_receive_bank_account_number9" pattern="\d*" class="col" ng-model="application.bank_account_no_array[8]" maxlength="1" ng-maxlength="1" tabindex="9" auto-next required>
+            <span class="col">-</span>
+            <input type="text" name="loan_receive_bank_account_numbe10" pattern="\d*" class="col" ng-model="application.bank_account_no_array[9]" maxlength="1" ng-maxlength="1" tabindex="10" auto-next required>
+          </div>
+
+          <div class="help-block" ng-show="
+              (formS5.loan_receive_bank_account_number1.$invalid && !formS5.loan_receive_bank_account_number1.$pristine) ||
+              (formS5.loan_receive_bank_account_number2.$invalid && !formS5.loan_receive_bank_account_number2.$pristine) ||
+              (formS5.loan_receive_bank_account_number3.$invalid && !formS5.loan_receive_bank_account_number3.$pristine) ||
+              (formS5.loan_receive_bank_account_number4.$invalid && !formS5.loan_receive_bank_account_number4.$pristine) ||
+              (formS5.loan_receive_bank_account_number5.$invalid && !formS5.loan_receive_bank_account_number5.$pristine) ||
+              (formS5.loan_receive_bank_account_number6.$invalid && !formS5.loan_receive_bank_account_number6.$pristine) ||
+              (formS5.loan_receive_bank_account_number7.$invalid && !formS5.loan_receive_bank_account_number7.$pristine) ||
+              (formS5.loan_receive_bank_account_number8.$invalid && !formS5.loan_receive_bank_account_number8.$pristine) ||
+              (formS5.loan_receive_bank_account_number9.$invalid && !formS5.loan_receive_bank_account_number9.$pristine)
+            ">
+            <p ng-show="
+              formS5.loan_receive_bank_account_number1.$error.required ||
+              formS5.loan_receive_bank_account_number2.$error.required ||
+              formS5.loan_receive_bank_account_number3.$error.required ||
+              formS5.loan_receive_bank_account_number4.$error.required ||
+              formS5.loan_receive_bank_account_number5.$error.required ||
+              formS5.loan_receive_bank_account_number6.$error.required ||
+              formS5.loan_receive_bank_account_number7.$error.required ||
+              formS5.loan_receive_bank_account_number8.$error.required ||
+              formS5.loan_receive_bank_account_number9.$error.required ||
+              formS5.loan_receive_bank_account_number1.$error.pattern ||
+              formS5.loan_receive_bank_account_number2.$error.pattern ||
+              formS5.loan_receive_bank_account_number3.$error.pattern ||
+              formS5.loan_receive_bank_account_number4.$error.pattern ||
+              formS5.loan_receive_bank_account_number5.$error.pattern ||
+              formS5.loan_receive_bank_account_number6.$error.pattern ||
+              formS5.loan_receive_bank_account_number7.$error.pattern ||
+              formS5.loan_receive_bank_account_number8.$error.pattern ||
+              formS5.loan_receive_bank_account_number9.$error.pattern
+            ">* โปรดกรอกตัวเลข 9 หลัก</p>
+          </div>
+        </label>
+
+        <label class="item item-input item-stacked-label"  ng-class="{ 'has-errors' : formS5.loan_receive_limit.$invalid && !formS5.loan_receive_limit.$pristine}">
+          <span class="input-label ">วงเงินที่ต้องการโอน <i class="ion-asterisk active w3-text-red"></i></span>
+          <input type="number" string-to-number pattern="\d*" name="loan_receive_limit" ng-model="application.loan_receive_limit" min="0" max="999999999" step="1" class="text-right" placeholder="" required>
+          <div class="help-block" ng-show="formS5.loan_receive_limit.$invalid && !formS5.loan_receive_limit.$pristine">
+            <p ng-show="formS5.loan_receive_limit.$error.required">* โปรดกรอกวงเงินที่ต้องการโอน </p>
+            <p ng-show="formS5.loan_receive_limit.$error.pattern">* ข้อมูลต้องเป็นตัวเลขเท่านั้น </p>
+          </div>
+        </label>
+
+        <div class="text-discription">
+          <small>สินเชื่อส่วนบุคคลที่ไม่ต้องมีหลักทรัพย์ หรือ บุคคลค้ำประกัน เพื่อตอบโจทย์ทุกความต้องการในชีวิตประจำวัน ไม่ว่าจะเป็น เพื่อการแต่งงาน เพื่อการคลอดบุตร เพื่อการศึกษา เพื่อการรักษาพยาบาล เพื่อการท่องเที่ยว หรือเพื่อปัจจัย 4 ในชีวิตประจำวัน  </small>
+        </div>
+
+        <div class="row row-bottom">
+          <div class="col col-bottom">
+            <button class="button button-block button-assertive" id="button-step-5" type="submit" ng-disabled="formS5.$invalid">บันทึก</button>
+            <!--<button class="button button-block button-assertive" type="submit" >ต่อไป</button>-->
+          </div>
+        </div>
+      </form>
+      <div class="fix-keyboard"></div>
+    </div>
+  </ion-content>
+</ion-view>
